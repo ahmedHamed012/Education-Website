@@ -1,0 +1,115 @@
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+@import "primeicons/primeicons.css";
+/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: "Poppins";
+  src: url("assets/fonts/Poppins/Poppins-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Barlow";
+  src: url("assets/fonts/Barlow/Barlow-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+:root {
+  --mainFont: "Poppins";
+  --secondaryFont: "Barlow";
+  --text-900: #000000;
+  --text-400: #333333;
+  --text-300: #545454;
+  --text-200: #8a8a8a;
+  --text-100: #e6e6e6;
+  --firstColor: #172b4d;
+  --secondColor: #5d3587;
+  --black1Color: #111111;
+  --black2Color: #000000;
+  --gray1Color: #e8e8e8;
+  --gray2Color: #e6e6e6;
+  --gray3Color: #cecece;
+  --gray4Color: #8a909c;
+  --gray5Color: #3e434c;
+  --whiteColor: #ffffff;
+  --white2Color: #f7f9fb;
+  --white3Color: #fafafa;
+  --notificationColor: #e92c2c;
+  --surface-ground: transparent;
+  --fontMain: "Poppins";
+  --fontSecondary: Inter;
+  --fontthird: "SF Pro Display", sans-serif;
+  --fontfourth: "Source Sans Pro", sans-serif;
+  --fontfifth: "Cairo", sans-serif;
+  --boxShadow: 0 4px 17px 0 rgba(0, 0, 0, 0.05);
+}
+body {
+  background-color: #f2f2f7;
+}
+input,
+.p-dropdown {
+  outline: none;
+  border: 1px solid #eee !important;
+  // height: 2.5rem;
+  border-radius: 4px;
+  background-color: white;
+  font-family: var(--secondaryFont);
+  font-size: 14px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.71;
+  letter-spacing: normal;
+
+  // text-align: left;
+  color: var(--gray5Color);
+
+  &:focus {
+    outline: none;
+    border-color: var(--secondColor);
+    box-shadow: 0 0 0 0.2rem #5d35876b;
+  }
+
+  .p-inputwrapper-focus {
+    outline: none;
+    border-color: var(--secondColor);
+    box-shadow: 0 0 0 0.2rem #5d35876b;
+  }
+}
+
+::ng-deep .p-inputswitch-checked .p-inputswitch-slider {
+  background-color: var(--secondColor);
+}
+
+::ng-deep .p-ripple.p-element.p-dropdown-item.p-highlight.p-focus {
+  color: var(--secondColor);
+  background-color: #5d35876b;
+}
+
+textarea {
+  width: 100%;
+}
+ol,
+ul {
+  /* padding-left: 2rem; */
+  padding-left: 0;
+}
+
+small {
+  display: block;
+}
+::ng-deep div.p-dropdown.p-component.p-inputwrapper {
+  width: 100%;
+}
+::ng-deep .p-dropdown:not(.p-disabled).p-focus {
+  box-shadow: none;
+}
+
+::ng-deep {
+  .p-button:focus {
+    box-shadow: none !important;
+  }
+}
+::ng-deep div.p-component-overlay.p-sidebar-mask.p-component-overlay-enter {
+  display: none !important;
+}

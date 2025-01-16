@@ -1,0 +1,16 @@
+@if (loading) {
+<div
+  class="loading-container d-flex justify-content-center align-items-center flex-column"
+  #bodyy
+>
+  <!-- styleClass="w-4rem h-rem" -->
+  <!-- <span class="loading-spinner-text">Loading</span> -->
+  <img
+    src="assets/Images/Fresh-Harvest-LOGO.png"
+    alt="loading"
+    style="width: 200px; height: auto"
+  />
+  <span class="loader"></span>
+</div>
+}
+<router-outlet></router-outlet>
