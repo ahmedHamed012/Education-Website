@@ -4,6 +4,7 @@
     table {
       thead {
         tr {
+          border-bottom: 10px solid #f2f2f7;
           th {
             padding: 10px;
             background-color: #b0e4dd;
@@ -16,6 +17,7 @@
       }
       tbody {
         tr {
+          border-bottom: 10px solid #f2f2f7;
           td {
             padding: 10px;
             text-align: center;
@@ -31,4 +33,11 @@ span.h2 {
   font-family: var(--mainFont);
   font-size: 2rem;
   font-weight: bold;
+}
+button.add-new-item-btn {
+  background-color: #006557;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding-inline: 10px;
 }
