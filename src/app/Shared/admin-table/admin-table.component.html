@@ -4,26 +4,62 @@
     <i class="pi pi-plus px-2"></i> {{ buttonLabel }}
   </button>
 </div>
+
 <p-table
-  [value]="customers"
+  [value]="itemsList"
   [paginator]="true"
   [rows]="5"
   [tableStyle]="{ 'min-width': '50rem' }"
 >
   <ng-template pTemplate="header">
     <tr>
-      <th style="width: 25%">Name</th>
-      <th style="width: 25%">Country</th>
-      <th style="width: 25%">Company</th>
-      <th style="width: 25%">Representative</th>
+      <ng-container *ngFor="let item of itemsHeaders">
+        <th style="width: 25%">{{ item | titlecase }}</th>
+      </ng-container>
+      <th style="width: 25%" *ngIf="actionVisibility">Actions</th>
     </tr>
   </ng-template>
-  <ng-template pTemplate="body" let-customer>
+  <ng-template pTemplate="body" let-record>
     <tr>
-      <td>{{ customer.name }}</td>
-      <td>{{ customer.country.name }}</td>
-      <td>{{ customer.company }}</td>
-      <td>{{ customer.representative.name }}</td>
+      <ng-container *ngFor="let item of itemsHeaders">
+        <td>{{ record[item] }}</td>
+      </ng-container>
+      <td *ngIf="actionVisibility" class="d-flex gap-3">
+        <button
+          class="p-2 d-flex align-items-center"
+          style="
+            background-color: #9dbdcd;
+            border-radius: 10px;
+            border: none;
+            font-family: 'Poppins';
+          "
+        >
+          <i class="pi pi-eye px-2"></i>View
+        </button>
+        <button
+          class="p-2 d-flex align-items-center"
+          style="
+            background-color: #b0e4dd;
+            border-radius: 10px;
+            border: none;
+            font-family: 'Poppins';
+          "
+        >
+          <i class="pi pi-pencil px-2"></i>Edit
+        </button>
+        <button
+          class="p-2 d-flex align-items-center"
+          style="
+            background-color: #e94d65;
+            border-radius: 10px;
+            border: none;
+            color: white;
+            font-family: 'Poppins';
+          "
+        >
+          <i class="pi pi-trash px-2"></i>Delete
+        </button>
+      </td>
     </tr>
   </ng-template>
 </p-table>

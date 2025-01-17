@@ -1,0 +1,30 @@
+@import "../../../Shared/navbar/navbar.component.scss";
+h2.sign-in-title {
+  font-family: "Poppins";
+  font-weight: bold;
+}
+span.form-control-label {
+  font-family: "Poppins";
+  font-size: 1.1rem;
+}
+button.submit-btn {
+  width: auto;
+  padding: 10px;
+  height: 48px;
+  font-family: "Poppins";
+  background-color: #003b33;
+  color: white;
+  border: none;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    background-color: white;
+    color: #003b33;
+    border: 2px solid #003b33;
+  }
+}
+button.social-btns {
+  width: 200px;
+  height: 44px;
+  background: none;
+  border: 1px solid #d9d9d9;
+}

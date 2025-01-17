@@ -46,34 +46,42 @@
 body {
   background-color: #f2f2f7;
 }
-input,
-.p-dropdown {
-  outline: none;
-  border: 1px solid #eee !important;
-  // height: 2.5rem;
-  border-radius: 4px;
-  background-color: white;
-  font-family: var(--secondaryFont);
-  font-size: 14px;
-  font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.71;
-  letter-spacing: normal;
-
-  // text-align: left;
-  color: var(--gray5Color);
-
-  &:focus {
+::ng-deep {
+  input,
+  input.p-inputtext.p-component.p-element.p-password-input.p-password-input,
+  .p-dropdown {
     outline: none;
-    border-color: var(--secondColor);
-    box-shadow: 0 0 0 0.2rem #5d35876b;
+    border: 1px solid #eee !important;
+    height: 2.6rem;
+    width: 100%;
+    border-radius: 1px;
+    background-color: white;
+    font-family: var(--mainFont);
+    font-size: 14px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.71;
+    letter-spacing: normal;
+    padding-inline: 0.75rem;
+
+    // text-align: left;
+    color: var(--gray5Color);
+
+    &:focus {
+      outline: none;
+      border-color: var(--secondColor);
+      box-shadow: 0 0 0 0.2rem #5d35876b;
+    }
+
+    .p-inputwrapper-focus {
+      outline: none;
+      border-color: var(--secondColor);
+      box-shadow: 0 0 0 0.2rem #5d35876b;
+    }
   }
-
-  .p-inputwrapper-focus {
-    outline: none;
-    border-color: var(--secondColor);
-    box-shadow: 0 0 0 0.2rem #5d35876b;
+  div.p-password.p-component.p-inputwrapper {
+    width: 100%;
   }
 }
 

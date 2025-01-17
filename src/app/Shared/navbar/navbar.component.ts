@@ -8,6 +8,7 @@ import { AvatarModule } from 'primeng/avatar';
 import { AvatarGroupModule } from 'primeng/avatargroup';
 import { BadgeModule } from 'primeng/badge';
 import { MenuItem } from 'primeng/api';
+import { RouterLink, RouterModule } from '@angular/router';
 @Component({
   selector: 'app-navbar',
   standalone: true,
@@ -21,6 +22,8 @@ import { MenuItem } from 'primeng/api';
     AvatarModule,
     AvatarGroupModule,
     BadgeModule,
+    RouterLink,
+    RouterModule,
   ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss',
