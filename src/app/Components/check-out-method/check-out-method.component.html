@@ -1,0 +1,152 @@
+<div class="checkout-container">
+  <!-- Header -->
+  <div class="checkout-header">
+    <h1>Checkout</h1>
+  </div>
+
+  <!-- Main Content -->
+  <div class="checkout-content">
+    <!-- Payment Method Section -->
+    <div class="payment-method">
+      <h2>Payment Method</h2>
+      <div class="payment-options">
+        <label class="payment-option">
+          <input type="radio" name="payment" class="w-auto" />
+          <div class="option-details">
+            <img
+              src="assets\Images\visa icon.png"
+              alt="Visa"
+              class="object-fit-contain"
+            />
+            <span>4855 **** **** ****</span>
+            <span>04/24</span>
+            <span>Vako Shvili</span>
+          </div>
+        </label>
+        <label class="payment-option">
+          <input type="radio" name="payment" class="w-auto" />
+          <div class="option-details">
+            <img
+              src="assets\Images\mastercard icon.png"
+              alt="Mastercard"
+              class="object-fit-contain"
+            />
+            <span>5795 **** **** ****</span>
+            <span>04/24</span>
+            <span>Vako Shvili</span>
+          </div>
+        </label>
+        <label class="payment-option">
+          <input type="radio" name="payment" class="w-auto" />
+          <div class="option-details">
+            <img
+              src="assets\Images\paypal card.png"
+              alt="PayPal"
+              class="object-fit-contain"
+            />
+            <span
+              >You will be redirected to the PayPal site after reviewing your
+              order.</span
+            >
+          </div>
+        </label>
+        <label class="payment-option">
+          <input type="radio" name="payment" class="w-auto" />
+          <div class="option-details new-card">
+            <span>
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 32 32"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M28 7H4C3.44772 7 3 7.44772 3 8V24C3 24.5523 3.44772 25 4 25H28C28.5523 25 29 24.5523 29 24V8C29 7.44772 28.5523 7 28 7Z"
+                  stroke="#007F6D"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M20.999 21H24.999"
+                  stroke="#007F6D"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M14.999 21H16.999"
+                  stroke="#007F6D"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M2.99902 12.1064H28.999"
+                  stroke="#007F6D"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              New Payment Cards</span
+            >
+          </div>
+        </label>
+      </div>
+
+      <!-- New Card Form -->
+      <form class="new-card-form">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" placeholder="Name on card" />
+        </div>
+        <div class="form-group">
+          <label for="card-number">Card Number</label>
+          <input type="text" id="card-number" placeholder="Card Number" />
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="expiry-date">MM / YY</label>
+            <input type="text" id="expiry-date" placeholder="MM / YY" />
+          </div>
+          <div class="form-group">
+            <label for="cvc">CVC</label>
+            <input type="text" id="cvc" placeholder="Security Code" />
+          </div>
+        </div>
+        <div class="remember-card d-flex gap-3">
+          <p-checkbox id="remember" [value]="true" />
+          <label for="remember"
+            >Remember this card, save it on my card list</label
+          >
+        </div>
+      </form>
+    </div>
+
+    <!-- Order Summary Section -->
+    <div class="order-summary" style="height: fit-content">
+      <h2>Course Details</h2>
+      <div class="course-details">
+        <img
+          src="assets\Images\video-cover.jpeg"
+          alt="Course Image"
+          class="object-fit-contain"
+        />
+        <div>
+          <p>Course by: Courtney Henry</p>
+          <p>Graphic Design Masterclass - Learn GREAT Design</p>
+          <p>$13.00</p>
+        </div>
+      </div>
+      <div class="summary-total">
+        <p>Total:</p>
+        <p>$13.00 USD</p>
+      </div>
+      <button class="complete-payment-btn" style="background-color: #004c41">
+        Complete Payment
+      </button>
+    </div>
+  </div>
+</div>
