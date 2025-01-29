@@ -1,0 +1,119 @@
+<div class="purchase-history-container">
+  <h1>Purchase History</h1>
+  <div
+    class="purchase-item d-flex justify-content-between align-items-center"
+    *ngFor="let purchase of purchases"
+  >
+    <div class="purchase-content">
+      <div class="purchase-header">
+        <div class="purchase-date">{{ purchase.date }}</div>
+        <button class="toggle-button">
+          <i class="arrow-down-icon"></i>
+        </button>
+      </div>
+      <div class="purchase-info gap-5 align-items-center">
+        <div class="courses d-flex align-items-center gap-2">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M10 17.5C14.1421 17.5 17.5 14.1421 17.5 10C17.5 5.85786 14.1421 2.5 10 2.5C5.85786 2.5 2.5 5.85786 2.5 10C2.5 14.1421 5.85786 17.5 10 17.5Z"
+              stroke="#564FFD"
+              stroke-width="1.3"
+              stroke-miterlimit="10"
+            />
+            <path
+              d="M12.5 10L8.75 7.5V12.5L12.5 10Z"
+              stroke="#564FFD"
+              stroke-width="1.3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          {{ purchase.courses }} Courses
+        </div>
+        <div class="price d-flex align-items-center gap-2">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M10 1.875V3.75"
+              stroke="#003B33"
+              stroke-width="1.3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M10 16.25V18.125"
+              stroke="#003B33"
+              stroke-width="1.3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M14.375 6.875C14.375 6.46462 14.2942 6.05826 14.1371 5.67911C13.9801 5.29997 13.7499 4.95547 13.4597 4.66529C13.1695 4.37511 12.825 4.14492 12.4459 3.98788C12.0667 3.83083 11.6604 3.75 11.25 3.75H8.4375C7.6087 3.75 6.81384 4.07924 6.22779 4.66529C5.64174 5.25134 5.3125 6.0462 5.3125 6.875C5.3125 7.7038 5.64174 8.49866 6.22779 9.08471C6.81384 9.67076 7.6087 10 8.4375 10H11.875C12.7038 10 13.4987 10.3292 14.0847 10.9153C14.6708 11.5013 15 12.2962 15 13.125C15 13.9538 14.6708 14.7487 14.0847 15.3347C13.4987 15.9208 12.7038 16.25 11.875 16.25H8.125C7.2962 16.25 6.50134 15.9208 5.91529 15.3347C5.32924 14.7487 5 13.9538 5 13.125"
+              stroke="#003B33"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          {{ purchase.price }} USD
+        </div>
+        <div class="payment-method d-flex align-items-center gap-2">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M17.5 4.375H2.5C2.15482 4.375 1.875 4.65482 1.875 5V15C1.875 15.3452 2.15482 15.625 2.5 15.625H17.5C17.8452 15.625 18.125 15.3452 18.125 15V5C18.125 4.65482 17.8452 4.375 17.5 4.375Z"
+              stroke="#23BD33"
+              stroke-width="1.3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M13.1245 13.125H15.6245"
+              stroke="#23BD33"
+              stroke-width="1.3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M9.37451 13.125H10.6245"
+              stroke="#23BD33"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M1.87451 7.56641H18.1245"
+              stroke="#23BD33"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          Credit Card
+        </div>
+      </div>
+    </div>
+    <button
+      class="toggle-button"
+      style="width: 48px; height: 48px; background-color: #f5f7fa; border: none"
+    >
+      <i class="pi pi-arrow-down"></i>
+    </button>
+  </div>
+</div>

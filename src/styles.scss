@@ -121,3 +121,14 @@ small {
 ::ng-deep div.p-component-overlay.p-sidebar-mask.p-component-overlay-enter {
   display: none !important;
 }
+
+button.nav-btn {
+  background-color: white;
+  border-radius: 20px;
+  width: 115px;
+  height: 36px;
+  border: none;
+  span {
+    font-family: var(--mainFont);
+  }
+}

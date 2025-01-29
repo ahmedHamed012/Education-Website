@@ -8,7 +8,7 @@ import { AvatarModule } from 'primeng/avatar';
 import { AvatarGroupModule } from 'primeng/avatargroup';
 import { BadgeModule } from 'primeng/badge';
 import { MenuItem } from 'primeng/api';
-import { RouterLink, RouterModule } from '@angular/router';
+import { Router, RouterLink, RouterModule } from '@angular/router';
 @Component({
   selector: 'app-navbar',
   standalone: true,
@@ -29,6 +29,7 @@ import { RouterLink, RouterModule } from '@angular/router';
   styleUrl: './navbar.component.scss',
 })
 export class NavbarComponent {
+  constructor(private readonly router: Router) {}
   items: MenuItem[] | undefined;
 
   ngOnInit() {
@@ -40,16 +41,16 @@ export class NavbarComponent {
             label: 'Settings',
             icon: 'pi pi-cog',
             shortcut: '⌘+O',
-          },
-          {
-            label: 'Messages',
-            icon: 'pi pi-inbox',
-            badge: '2',
+            command: () => {
+              this.router.navigate(['/home/profile-setting']);
+            },
           },
           {
             label: 'Logout',
             icon: 'pi pi-sign-out',
-            shortcut: '⌘+Q',
+            command: () => {
+              this.router.navigate(['/auth/login']);
+            },
           },
         ],
       },

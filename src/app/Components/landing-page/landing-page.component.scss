@@ -1,0 +1,104 @@
+section.hero-sec {
+  div.hero-sec-img {
+    background-image: url("../../../assets/Images/hero-img.jpeg");
+    background-size: cover;
+    background-position: 50%;
+    background-repeat: no-repeat;
+  }
+}
+
+p.hero-sec-info-title {
+  font-family: "Poppins";
+  font-weight: bold;
+  font-size: 2rem;
+}
+p.hero-sec-info-desc {
+  font-family: "Poppins";
+  font-size: 0.98rem;
+  color: #0000007a;
+  line-height: 1.7;
+}
+p.sec-title {
+  font-family: "Poppins";
+  font-weight: bold;
+  font-size: 2rem;
+}
+p.sec-desc {
+  font-family: "Poppins";
+  font-size: 0.98rem;
+  color: #0000007a;
+  line-height: 1.7;
+}
+div.course {
+  border: 1px solid #000;
+  height: 360px;
+  div.course-desc {
+    p {
+      font-family: "Poppins";
+      margin: 0;
+      margin-bottom: 10px;
+      &:first-of-type {
+        font-weight: bold;
+        font-size: 1rem;
+      }
+      &:last-of-type {
+        font-size: 0.8rem;
+        color: #0000007a;
+        margin-bottom: 30px;
+      }
+    }
+    div {
+      &:last-child {
+        color: #006557;
+        font-size: 0.9rem;
+        font-family: "Poppins";
+        cursor: pointer;
+      }
+    }
+  }
+}
+section.sec-3 {
+  background-image: url("../../../assets/Images/background_1.jpeg");
+  background-size: cover;
+  height: 70vh;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  flex-flow: column wrap;
+}
+div.benefit {
+  margin-bottom: 30px;
+  p {
+    font-family: "Poppins";
+    margin: 0;
+    &:first-of-type {
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+    &:last-of-type {
+      font-size: 0.9rem;
+      color: #0000007a;
+    }
+  }
+}
+section.sec-5 {
+  background-image: url("../../../assets/Images/background_2.jpeg");
+  background-size: cover;
+  height: fit-content;
+}
+div.useful-properties {
+  p {
+    font-family: "Poppins";
+    margin: 0;
+    text-align: center;
+    &:first-of-type {
+      font-weight: bold;
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+    &:last-of-type {
+      font-size: 1rem;
+      color: #006557;
+    }
+  }
+}
