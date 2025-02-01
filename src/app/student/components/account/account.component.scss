@@ -1,0 +1,158 @@
+*:not(i) {
+    font-family: "Poppins", sans-serif;
+}
+
+.account-settings {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    font-family: "Arial", sans-serif;
+
+    h2 {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .profile {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 20px;
+
+        .profile-pic {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .profile-info {
+            display: flex;
+            flex-direction: column;
+
+            h3 {
+                margin: 0;
+                font-size: 20px;
+            }
+
+            a {
+                color: #007bff;
+                text-decoration: none;
+            }
+        }
+
+        .edit-picture {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+
+            i {
+                font-size: 14px;
+                color: #333;
+            }
+        }
+    }
+
+    .account-form,
+    .password-form {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        margin-bottom: 20px;
+
+        @media (max-width: 768px) {
+            grid-template-columns: 1fr;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+
+            label {
+                font-weight: 600;
+                margin-bottom: 5px;
+            }
+
+            input {
+                padding: 8px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+
+            &.gender {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+        }
+
+        button {
+            grid-column: span 2;
+            padding: 10px;
+            background-color: #003b33;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease-in-out;
+
+            &:hover {
+                background-color: white;
+                color: #003b33;
+                border: 2px solid #003b33;
+            }
+
+            @media (max-width: 768px) {
+                grid-column: span 1;
+            }
+        }
+    }
+
+    .password-form {
+        .form-group {
+            position: relative;
+
+            input {
+                width: 100%;
+            }
+
+            i {
+                position: absolute;
+                right: 10px;
+                top: 50%;
+                transform: translateY(-50%);
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+button.submit-btn {
+    grid-column: span 2;
+    padding: 10px;
+    width: auto;
+    padding: 10px;
+    height: 48px;
+    font-family: "Poppins";
+    background-color: #003b33;
+    color: white;
+    border: none;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+        background-color: white;
+        color: #003b33;
+        border: 2px solid #003b33;
+    }
+}
+
+::ng-deep div.p-password.p-component.p-inputwrapper {
+    width: 100%;
+
+    input.p-inputtext.p-component.p-element.p-password-input {
+        width: 100%;
+    }
+}

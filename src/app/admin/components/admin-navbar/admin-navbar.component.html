@@ -1,0 +1,84 @@
+<nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+        <a class="navbar-brand d-flex align-items-center" routerLink="/">
+            <!-- <img src="assets/Images/logo.png" width="auto" height="35" alt="Logo" /> -->
+            <span class="ms-2">Learn-on</span>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+            <ul class="navbar-nav mx-auto d-flex gap-4">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" routerLink="/admin/dashboard">
+                        <i class="pi pi-home px-2"></i>Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/admin/all-courses"><i class="pi pi-book px-2"></i>Courses</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/admin/all-instructors"><i class="pi pi-briefcase px-2"></i>Instructors</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/admin/all-students"><i class="pi pi-users px-2"></i>Students</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/admin/all-categories"><i class="pi pi-tags px-2"></i>Categories</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/admin/all-admins"><i class="pi pi-shield px-2"></i>Admins</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/admin/all-purchases"><i class="pi pi-credit-card px-2"></i>Purchases</a>
+                </li>
+            </ul>
+
+            <div>
+                <p-menu #menu [model]="items" class="flex justify-center" styleClass="w-full md:w-60" [popup]="true">
+                    <ng-template #submenuheader let-item>
+                        <span class="text-primary font-bold">{{ item.label }}</span>
+                    </ng-template>
+
+                    <ng-template #item let-item>
+                        <a pRipple class="flex items-center p-menu-item-link">
+                            <span [class]="item.icon"></span>
+                            <span class="ml-2">{{ item.label }}</span>
+                            <p-badge *ngIf="item.badge" class="ml-auto" [value]="item.badge" />
+                            <span *ngIf="item.shortcut"
+                                class="ml-auto border border-surface rounded bg-emphasis text-muted-color text-xs p-1">{{
+                                item.shortcut }}</span>
+                        </a>
+                    </ng-template>
+
+                    <ng-template pTemplate="end">
+                        <button pRipple class="d-flex gap-2 align-items-center mx-auto"
+                            style="background: none; border: none">
+                            <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png"
+                                class="mr-2" shape="circle" />
+                            <span class="d-inline-flex flex-column" style="font-family: 'Poppins'">
+                                <span class="fw-bold">Amy Elsner</span>
+                                <span class="text-muted small">Admin</span>
+                            </span>
+                        </button>
+                    </ng-template>
+                </p-menu>
+
+                <button (click)="menu.toggle($event)" class="d-flex align-items-center gap-2 py-1" style="
+                    width: fit-content;
+                    font-family: 'Poppins';
+                    background: none;
+                    color: white;
+                    border: none; ">
+
+                    <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" class="mr-2"
+                        shape="circle" />
+                    <span> Admin </span>
+                    <i class="pi pi-angle-down"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</nav>

@@ -123,6 +123,7 @@ small {
 }
 
 button.nav-btn {
+  color: #008774;
   background-color: white;
   border-radius: 20px;
   width: 115px;
@@ -131,4 +132,7 @@ button.nav-btn {
   span {
     font-family: var(--mainFont);
   }
+  &:hover{
+    background-color: #dbeee5;
+}
 }

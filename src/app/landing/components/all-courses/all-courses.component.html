@@ -1,0 +1,43 @@
+<div class="all-courses-container">
+    <div class="container my-5">
+        <!-- Header Section -->
+        <div class="header d-flex flex-wrap flex-md-nowrap">
+            <div class="col-12 col-md-6">
+                <h1>All Courses (657)</h1>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="search-bar">
+                    <input type="text" class="form-control" placeholder="Search ..." aria-label="Search"
+                        aria-describedby="search-button" />
+                    <button class="btn btn-primary" type="button" id="search-button">
+                        Search
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Courses Grid -->
+        <div class="courses-grid">
+            <div *ngFor="let course of courses" class="course-card" [style]="{ width: '300px', margin: '10px' }">
+                <img [src]="course.image" alt="Course Image" class="course-image"
+                    style="width: 100%; height: 200px; object-fit: cover" />
+                <div class="course-content">
+                    <p>By {{ course.author }}</p>
+                    <h3>{{ course.title }}</h3>
+                    <button type="button" class="buy-course-btn p-2" [ngStyle]="{
+                border: 'none',
+                backgroundColor: '#E6F6F4',
+                color: '#004C41',
+                fontWeight: 'bold'
+                }" (click)="buyCourse(course)">
+                        Buy Course
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pagination -->
+        <p-paginator [rows]="12" [totalRecords]="657" [rowsPerPageOptions]="[12, 24, 36]"
+            (onPageChange)="onPageChange($event)"></p-paginator>
+    </div>
+</div>

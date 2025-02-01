@@ -1,0 +1,37 @@
+@import "../../../../styles.scss";
+
+nav {
+    background-color: #008774;
+
+    a.navbar-brand {
+        color: white;
+        font-family: var(--mainFont);
+        font-weight: bold;
+    }
+
+    ul.navbar-nav {
+        li.nav-item {
+            a {
+                font-family: var(--mainFont);
+                color: white;
+                font-weight: 400;
+            }
+        }
+    }
+}
+
+button.nav-btn {
+    background-color: white;
+    border-radius: 20px;
+    width: 115px;
+    height: 36px;
+    border: none;
+
+    span {
+        font-family: var(--mainFont);
+    }
+}
+
+::ng-deep a.p-ripple.p-element.p-menuitem-link {
+    text-decoration: none;
+}

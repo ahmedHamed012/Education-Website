@@ -1,0 +1,94 @@
+*:not(i) {
+    font-family: "Poppins", sans-serif;
+}
+
+.all-courses-container {
+    padding: 20px;
+    font-family: "Roboto", sans-serif;
+
+    .header {
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+
+        h1 {
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        .search-bar {
+            display: flex;
+
+            .form-control {
+                border: 1px solid #ccc;
+                border-radius: 5px 0 0 5px;
+                height: 43px;
+
+                &:focus {
+                    outline: none;
+                    box-shadow: none;
+                    border-color: #004c41;
+                }
+            }
+
+            .btn-primary {
+                border-radius: 0 5px 5px 0;
+                background: #004c41;
+                border: none;
+
+                &:hover {
+                    background: #004c41;
+                }
+            }
+        }
+    }
+
+    .courses-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+
+        .course-card {
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            background-color: white;
+
+            .course-content {
+                padding: 15px;
+
+                p {
+                    font-size: 0.9rem;
+                    color: #666;
+                }
+
+                h3 {
+                    margin: 10px 0;
+                    font-size: 1.1rem;
+                    color: #333;
+                }
+
+                .buy-course-btn {
+                    width: 100%;
+                    background: #4caf50;
+                    color: #fff;
+
+                    &:hover {
+                        background: #43a047;
+                    }
+                }
+            }
+        }
+    }
+
+    p-paginator {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+
+        .p-paginator-pages .p-paginator-page {
+            &.p-highlight {
+                background: #4caf50;
+                color: #fff;
+            }
+        }
+    }
+}

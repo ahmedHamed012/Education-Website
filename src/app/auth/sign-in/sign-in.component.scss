@@ -1,0 +1,50 @@
+@import "../../../styles.scss";
+nav {
+  background-color: #008774;
+  a.navbar-brand {
+    color: white;
+    font-family: var(--mainFont);
+    font-weight: bold;
+  }
+  ul.navbar-nav {
+    li.nav-item {
+      a {
+        font-family: var(--mainFont);
+        color: white;
+        font-weight: 400;
+      }
+    }
+  }
+}
+
+::ng-deep a.p-ripple.p-element.p-menuitem-link {
+  text-decoration: none;
+}h2.sign-in-title {
+  font-family: "Poppins";
+  font-weight: bold;
+}
+span.form-control-label {
+  font-family: "Poppins";
+  font-size: 1.1rem;
+}
+button.submit-btn {
+  width: auto;
+  padding: 10px;
+  height: 48px;
+  font-family: "Poppins";
+  background-color: #003b33;
+  color: white;
+  border: none;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    background-color: white;
+    color: #003b33;
+    border: 2px solid #003b33;
+  }
+}
+button.social-btns {
+  width: 200px;
+  height: 44px;
+  background: none;
+  border: 1px solid #d9d9d9;
+}

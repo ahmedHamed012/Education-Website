@@ -1,0 +1,193 @@
+*:not(i) {
+    font-family: "Poppins";
+}
+
+.checkout-container {
+    padding: 20px;
+    font-family: "Roboto", sans-serif;
+
+    .checkout-header {
+        text-align: center;
+        margin-bottom: 20px;
+
+        h1 {
+            font-size: 2rem;
+            color: #333;
+        }
+    }
+
+    .checkout-content {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+
+        .payment-method {
+            flex: 2;
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+
+            h2 {
+                font-size: 1.5rem;
+                margin-bottom: 15px;
+            }
+
+            .payment-options {
+                .payment-option {
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 15px;
+                    padding: 10px;
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
+
+                    input {
+                        margin-right: 10px;
+                    }
+
+                    .option-details {
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+
+                        img {
+                            width: 40px;
+                            height: 25px;
+                            object-fit: cover;
+                        }
+
+                        span {
+                            font-size: 0.9rem;
+                            color: #333;
+                        }
+                    }
+
+                    &.new-card {
+                        font-weight: bold;
+                        color: #007bff;
+                    }
+                }
+            }
+
+            .new-card-form {
+                margin-top: 20px;
+
+                .form-group {
+                    margin-bottom: 15px;
+
+                    label {
+                        display: block;
+                        font-size: 0.9rem;
+                        color: #555;
+                        margin-bottom: 5px;
+                    }
+
+                    input {
+                        width: 100%;
+                        padding: 10px;
+                        border: 1px solid #ccc;
+                        border-radius: 5px;
+
+                        &:focus {
+                            outline: none;
+                            border-color: #007bff;
+                            box-shadow: 0 0 3px rgba(0, 123, 255, 0.25);
+                        }
+                    }
+                }
+
+                .form-row {
+                    display: flex;
+                    gap: 15px;
+
+                    .form-group {
+                        flex: 1;
+                    }
+                }
+
+                .remember-card {
+                    display: flex;
+                    align-items: center;
+
+                    input {
+                        margin-right: 5px;
+                    }
+
+                    label {
+                        font-size: 0.9rem;
+                        color: #333;
+                    }
+                }
+            }
+        }
+
+        .order-summary {
+            flex: 1;
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+
+            h2 {
+                font-size: 1.5rem;
+                margin-bottom: 15px;
+            }
+
+            .course-details {
+                display: flex;
+                gap: 15px;
+                margin-bottom: 20px;
+
+                img {
+                    width: 80px;
+                    height: 80px;
+                    object-fit: cover;
+                    border-radius: 8px;
+                }
+
+                div {
+                    p {
+                        margin: 0;
+                        font-size: 0.9rem;
+                        color: #555;
+
+                        &:last-child {
+                            font-size: 1rem;
+                            font-weight: bold;
+                            color: #333;
+                        }
+                    }
+                }
+            }
+
+            .summary-total {
+                display: flex;
+                justify-content: space-between;
+                font-size: 1.2rem;
+                font-weight: bold;
+                margin-bottom: 20px;
+            }
+
+            .complete-payment-btn {
+                width: 100%;
+                padding: 10px;
+                background: #007bff;
+                color: #fff;
+                font-size: 1rem;
+                font-weight: bold;
+                border: none;
+                border-radius: 5px;
+
+                &:hover {
+                    background: #0056b3;
+                }
+            }
+        }
+    }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+    .checkout-content {
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,34 @@
+<div class="d-flex my-5">
+    <span class="h2">All Purchases</span>
+</div>
+
+<p-table [value]="itemsList" [paginator]="true" [rows]="5" [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template pTemplate="header">
+        <tr>
+            <th style="width: calc(100% / 6)">Id</th>
+            <th style="width: calc(100% / 6)">Student</th>
+            <th style="width: calc(100% / 6)">Instructor</th>
+            <th style="width: calc(100% / 6)">Course</th>
+            <th style="width: calc(100% / 6)">Amount Paid</th>
+            <th style="width: calc(100% / 6)">Payment Method</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-record>
+        <tr>
+            <td>{{ record.id }}</td>
+            <td>{{ record.studentName }}</td>
+            <td>{{ record.instructorName }}</td>
+            <td>{{ record.course }}</td>
+            <td>{{ record.amountPaid }}</td>
+            <td>
+                @switch (record.paymentMethod) { @case ("paypal") {
+                <img src="assets/Images/paypal.png" width="auto" height="30" />
+                } @case ("master") {
+                <img src="assets/Images/master.png" width="auto" height="40" />
+                } @default {
+                <img src="assets/Images/visa.png" width="auto" height="25" />
+                } }
+            </td>
+        </tr>
+    </ng-template>
+</p-table>

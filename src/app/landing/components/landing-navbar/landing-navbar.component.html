@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+        <a class="navbar-brand d-flex align-items-center" routerLink="/">
+            <!-- <img src="assets/Images/logo.png" width="auto" height="35" alt="Logo" /> -->
+            <span class="ms-2">Learn-on</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+            <ul class="navbar-nav mx-auto d-flex gap-4">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" routerLink="/"><i class="pi pi-home px-2"></i>Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/about"><i class="pi pi-info-circle px-2"></i>About us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/contact"><i class="pi pi-phone px-2"></i>Contact us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/all-courses"><i class="pi pi-book px-2"></i>All Courses</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/all-instructors"><i class="pi pi-briefcase px-2"></i>All Instructors</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/faq"><i class="pi pi-question-circle px-2"></i>FAQ</a>
+                </li>
+            </ul>
+            <div class="d-flex gap-3">
+                <button class="nav-btn" routerLink="/auth/login">Sign In</button>
+                <button class="nav-btn" routerLink="/auth/register">Sign Up</button>
+            </div>
+        </div>
+    </div>
+</nav>

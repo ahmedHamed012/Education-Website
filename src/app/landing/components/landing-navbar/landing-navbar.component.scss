@@ -1,0 +1,36 @@
+@import "../../../../styles.scss";
+
+nav {
+    background-color: #008774;
+
+    a.navbar-brand {
+        color: white;
+        font-family: var(--mainFont);
+        font-weight: bold;
+    }
+
+    ul.navbar-nav {
+        li.nav-item {
+            a {
+                font-family: var(--mainFont);
+                color: white;
+                font-weight: 400;
+
+                &:hover{
+                    color: #b5dbc9;
+                }
+            }
+        }
+    }
+}
+
+.btn-outline-success {
+    border-radius: 20px;
+    border: 2px solid #008774;
+    color: #008774;
+    background-color: #fff;
+
+    &:hover{
+        background-color: #dbeee5;
+    }
+}

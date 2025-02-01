@@ -1,0 +1,78 @@
+<div class="account-settings my-5">
+    <h2>Account settings</h2>
+
+    <!-- Profile Section -->
+    <div class="profile">
+        <img src="assets/Images/person_1.jpeg" alt="Profile Picture" class="profile-pic" />
+        <div class="profile-info">
+            <h3>Mohammed Saleh</h3>
+            <a href="mailto:mohammedsaleh23@gmail.com">mohammedsaleh23{{ "@" }}gmail.com</a>
+        </div>
+    </div>
+
+    <!-- Account Form -->
+    <form class="account-form">
+        <div class="form-group">
+            <label>First name:</label>
+            <input type="text" value="Mohammed" />
+        </div>
+        <div class="form-group">
+            <label>Last name:</label>
+            <input type="text" value="Saleh" />
+        </div>
+        <div class="form-group">
+            <label>User name:</label>
+            <input type="text" value="MohammedSaleh23" />
+        </div>
+        <div class="form-group">
+            <label>Faculty:</label>
+            <input type="text" value="Faculty of Computer Science" />
+        </div>
+        <div class="form-group">
+            <label>University:</label>
+            <input type="text" value="Cairo University" />
+        </div>
+        <div class="form-group">
+            <label>Email:</label>
+            <input type="email" value="MohammedSaleh23@gmail.com" readonly />
+        </div>
+        <div class="form-group">
+            <label>Country:</label>
+            <input type="text" value="United Arab Emirates" />
+        </div>
+        <div class="form-group">
+            <label>Phone:</label>
+            <input type="text" value="+20 1234567890" />
+        </div>
+        <div class="form-group gender d-flex align-items-start">
+            <label>Gender:</label>
+            <div class="d-flex gap-3">
+                <input type="radio" name="gender" checked /> Male
+                <input type="radio" name="gender" /> Female
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Date of Birth:</label>
+            <input type="text" value="29/04/1997" />
+        </div>
+        <button type="submit" class="submit-btn">Update</button>
+    </form>
+
+    <!-- Change Password Section -->
+    <h3 class="py-4">Change password</h3>
+    <form class="password-form">
+        <div class="form-group password">
+            <label>Current Password</label>
+            <p-password [toggleMask]="true" [feedback]="false" placeholder="Enter your password ..." />
+        </div>
+        <div class="form-group password">
+            <label>New Password</label>
+            <p-password [toggleMask]="true" [feedback]="false" placeholder="Enter your password ..." class="w-100" />
+        </div>
+        <div class="form-group password">
+            <label>Confirm Password</label>
+            <p-password [toggleMask]="true" [feedback]="false" placeholder="Enter your password ..." />
+        </div>
+        <button type="submit" class="submit-btn">Change Password</button>
+    </form>
+</div>
