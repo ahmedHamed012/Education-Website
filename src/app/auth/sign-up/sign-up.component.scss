@@ -2,3 +2,58 @@
 label {
   font-size: 0.8rem;
 }
+::ng-deep .p-ripple.p-element.p-menuitem-link.ng-star-inserted {
+  text-decoration: none;
+}
+::ng-deep
+  .p-tabmenu
+  .p-tabmenu-nav
+  .p-tabmenuitem.p-highlight
+  .p-menuitem-link {
+  border-color: #0087757a;
+}
+::ng-deep
+  .p-tabmenu
+  .p-tabmenu-nav
+  .p-tabmenuitem.p-highlight
+  .p-menuitem-link
+  span {
+  color: #008774;
+}
+::ng-deep .p-menuitem-text.ng-star-inserted {
+  color: black;
+}
+::ng-deep .p-steps .p-steps-item.p-highlight .p-steps-number {
+  background-color: #008774;
+}
+::ng-deep a {
+  text-decoration: none;
+}
+
+::ng-deep a.p-ripple.p-element.p-menuitem-link.ng-star-inserted {
+  padding-left: 0;
+}
+
+.user-add-title {
+  font-family: Poppins;
+  font-size: 24px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.17;
+  letter-spacing: normal;
+  color: #1c1c1c;
+}
+::ng-deep .p-tabmenu-nav-content a {
+  text-decoration: none;
+  color: var(--gray4Color);
+}
+
+::ng-deep
+  .p-tabmenu
+  .p-tabmenu-nav
+  .p-tabmenuitem.p-highlight
+  .p-menuitem-link {
+  border-color: var(--secondColor);
+  color: var(--secondColor);
+}

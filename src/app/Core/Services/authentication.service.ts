@@ -2,46 +2,53 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment.development';
+import { IUser } from '../Interfaces/create-user.interface';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthenticationService {
   private readonly apiUrl = `${environment.apiUrl}`;
-  clientheaders = new HttpHeaders({
-    'Content-Type': 'multipart/form-data',
-    Accept: 'application/json',
-    'Access-Control-Allow-Origin': '*',
-  });
-  constructor(private readonly http: HttpClient) {}
-  login(email: string, password: string): Observable<any> {
-    return this.http.post<any>(
-      `${this.apiUrl}/login?email=${email}&password=${password}`,
-      {},
-      {
-        headers: this.clientheaders,
-        withCredentials: true,
-      }
+
+  constructor(
+    private readonly http: HttpClient,
+    private readonly router: Router
+  ) {}
+  private googleAuthUrl = 'http://localhost:8000/api/auth/google';
+
+  // Redirect user to Google authentication
+  loginWithGoogle() {
+    window.open(
+      this.googleAuthUrl,
+      'GoogleAuth',
+      'width=500,height=600,left=100,top=100'
     );
   }
-  register(userData: any): Observable<any> {
-    const {
-      name,
-      phone,
+
+  // Handle response from backend
+  handleGoogleCallback(response: any) {
+    localStorage.setItem('googleUser', JSON.stringify(response));
+
+    // Redirect user to sign-up form with Google data prefilled
+    this.router.navigate(['/sign-up']);
+  }
+
+  // Get user details from storage
+  getGoogleUser() {
+    return JSON.parse(localStorage.getItem('googleUser') || '{}');
+  }
+  login(email: string, password: string): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/login`, {
       email,
       password,
-      password_confirmation,
-      gender,
-      Country,
-      age,
-    } = userData;
-    return this.http.post<any>(
-      `${this.apiUrl}/register?name=${name}&email=${email}&phone=${phone}&gender=${gender}&Country=${Country}&password=${password}&password_confirmation=${password_confirmation}&age=${age}`,
-      {}
-    );
+    });
+  }
+  register(userData: IUser): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/register`, { ...userData });
   }
   getLoggedInUserData(token: string): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/me`, {
+    return this.http.get<any>(`${this.apiUrl}/profile`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

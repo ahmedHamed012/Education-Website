@@ -8,7 +8,7 @@ import { PaginatorModule } from 'primeng/paginator';
   standalone: true,
   imports: [CommonModule, PaginatorModule],
   templateUrl: './all-courses.component.html',
-  styleUrl: './all-courses.component.scss'
+  styleUrl: './all-courses.component.scss',
 })
 export class AllCoursesComponent {
   constructor(private readonly router: Router) {}
@@ -22,7 +22,8 @@ export class AllCoursesComponent {
     console.log('Page changed:', event.page);
     // Fetch data for the selected page
   }
+
   buyCourse(course: any) {
-    this.router.navigate(['/home/buy-course']);
+    this.router.navigate(['/student/course']);
   }
 }

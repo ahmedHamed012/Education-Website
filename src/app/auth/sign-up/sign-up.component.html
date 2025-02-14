@@ -1,8 +1,9 @@
+<p-toast></p-toast>
 <nav class="navbar navbar-expand-lg">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
       <!-- <img src="assets/Images/logo.png" width="auto" height="40" /> -->
-      Education</a
+      Learn-On</a
     >
     <button
       class="navbar-toggler"
@@ -31,73 +32,231 @@
 </nav>
 <div class="d-flex w-100">
   <div class="image d-flex w-50">
-    <img src="assets/Images/sign_up_avatar.png" class="w-100" />
+    <img
+      src="assets/Images/sign_up_avatar.png"
+      class="w-100 object-fit-cover"
+    />
   </div>
   <div
     class="form d-flex w-50 bg-white justify-content-center align-items-center py-4"
   >
     <div class="w-100">
-      <form [formGroup]="signUpForm">
+      <form [formGroup]="signUpForm" (ngSubmit)="register()">
         <h2 class="sign-in-title w-100 text-center py-5">
           Create your account
         </h2>
         <div class="d-flex flex-column gap-4">
-          <div class="full-name-controller d-flex flex-column w-100 px-4 gap-2">
-            <span class="form-control-label">Full Name</span>
-            <div class="d-flex gap-4">
-              <input
-                type="text"
-                pInputText
-                formControlName="firstName"
-                placeholder="First Name ..."
-              />
-              <input
-                type="text"
-                pInputText
-                formControlName="lastName"
-                placeholder="Last Name ..."
-              />
-            </div>
-          </div>
-          <div class="user-name-controller d-flex flex-column w-100 px-4 gap-2">
-            <span class="form-control-label">Username</span>
-            <input
-              type="text"
-              pInputText
-              formControlName="userName"
-              placeholder="Username ..."
-            />
-          </div>
-          <div class="email-controller d-flex flex-column w-100 px-4 gap-2">
-            <span class="form-control-label">Email</span>
-            <input
-              type="email"
-              pInputText
-              formControlName="email"
-              placeholder="Your Email Address ..."
-            />
-          </div>
-          <div class="password-controller d-flex flex-column w-100 px-4 gap-2">
-            <span class="form-control-label">Password</span>
-            <div class="d-flex gap-4">
-              <div class="col">
-                <p-password
-                  formControlName="password"
-                  [toggleMask]="true"
-                  [feedback]="false"
-                  placeholder="Enter your password ..."
+          <p-steps
+            [model]="items"
+            [readonly]="false"
+            [activeIndex]="activeIndex"
+            (activeIndexChange)="onActiveIndexChange($event)"
+          />
+          <ng-container *ngIf="generalInfoTab">
+            <div
+              class="full-name-controller d-flex flex-column w-100 px-4 gap-2"
+            >
+              <span class="form-control-label">Full Name</span>
+              <div class="d-flex gap-4">
+                <input
+                  type="text"
+                  pInputText
+                  formControlName="firstName"
+                  placeholder="First Name ..."
                 />
-              </div>
-              <div class="col">
-                <p-password
-                  formControlName="confirmPassword"
-                  [toggleMask]="true"
-                  [feedback]="false"
-                  placeholder="Confirm your password ..."
+                <input
+                  type="text"
+                  pInputText
+                  formControlName="lastName"
+                  placeholder="Last Name ..."
                 />
               </div>
             </div>
-          </div>
+            <div
+              class="user-name-controller d-flex flex-column w-100 px-4 gap-2"
+            >
+              <span class="form-control-label">Username</span>
+              <input
+                type="text"
+                pInputText
+                formControlName="userName"
+                placeholder="Username ..."
+              />
+            </div>
+            <div class="email-controller d-flex flex-column w-100 px-4 gap-2">
+              <span class="form-control-label">Email</span>
+              <input
+                type="email"
+                pInputText
+                formControlName="email"
+                placeholder="Your Email Address ..."
+              />
+            </div>
+            <div class="role-controller d-flex flex-column w-100 px-4 gap-2">
+              <span class="form-control-label">Role</span>
+              <div class="d-flex align-items-center gap-3">
+                <!-- <input
+                  type="radio"
+                  name="role"
+                  value="admin"
+                  formControlName="role"
+                />
+                Admin -->
+                <input
+                  type="radio"
+                  name="role"
+                  value="student"
+                  formControlName="role"
+                />
+                Student
+                <input
+                  type="radio"
+                  name="role"
+                  value="instructor"
+                  formControlName="role"
+                />
+                Instructor
+              </div>
+            </div>
+            <div
+              class="password-controller d-flex flex-column w-100 px-4 gap-2"
+            >
+              <span class="form-control-label">Password</span>
+              <div class="d-flex gap-4">
+                <div class="col">
+                  <p-password
+                    formControlName="password"
+                    [toggleMask]="true"
+                    [feedback]="false"
+                    placeholder="Enter your password ..."
+                  />
+                </div>
+                <div class="col">
+                  <p-password
+                    formControlName="confirmPassword"
+                    [toggleMask]="true"
+                    [feedback]="false"
+                    placeholder="Confirm your password ..."
+                  />
+                </div>
+              </div>
+            </div>
+          </ng-container>
+          <ng-container *ngIf="personalInfoTab">
+            <div class="dob-controller d-flex flex-column w-100 px-4 gap-2">
+              <span class="form-control-label">Date of Birth</span>
+              <input
+                type="date"
+                pInputText
+                formControlName="dateOfBirth"
+                placeholder="Select your birth date ..."
+              />
+            </div>
+
+            <div class="gender-controller d-flex flex-column w-100 px-4 gap-2">
+              <span class="form-control-label">Gender</span>
+              <div class="d-flex align-items-center gap-3">
+                <input
+                  type="radio"
+                  name="gender"
+                  value="male"
+                  formControlName="gender"
+                />
+                Male
+                <input
+                  type="radio"
+                  name="gender"
+                  value="female"
+                  formControlName="gender"
+                />
+                Female
+                <input
+                  type="radio"
+                  name="gender"
+                  value="other"
+                  formControlName="gender"
+                />
+                Other
+              </div>
+            </div>
+
+            <div class="country-controller d-flex flex-column w-100 px-4 gap-2">
+              <span class="form-control-label">Country</span>
+              <input
+                type="text"
+                pInputText
+                formControlName="country"
+                placeholder="Enter your country ..."
+              />
+            </div>
+
+            <div class="phone-controller d-flex flex-column w-100 px-4 gap-2">
+              <span class="form-control-label">Phone</span>
+              <input
+                type="text"
+                pInputText
+                formControlName="phone"
+                placeholder="Enter your phone number ..."
+              />
+            </div>
+
+            <div
+              class="education-controller d-flex flex-column w-100 px-4 gap-2"
+              *ngIf="signUpForm.get('role')?.value == 'student'"
+            >
+              <span class="form-control-label">Education</span>
+              <input
+                type="text"
+                pInputText
+                formControlName="education"
+                placeholder="Enter your education ..."
+              />
+            </div>
+
+            <div
+              class="major-controller d-flex flex-column w-100 px-4 gap-2"
+              *ngIf="signUpForm.get('role')?.value == 'instructor'"
+            >
+              <span class="form-control-label">Major</span>
+              <input
+                type="text"
+                pInputText
+                formControlName="major"
+                placeholder="Enter your major ..."
+              />
+            </div>
+
+            <div class="image-controller d-flex flex-column w-100 px-4 gap-2">
+              <span class="form-control-label">Profile Image</span>
+              <input type="file" accept="image/*" formControlName="image" />
+            </div>
+
+            <div
+              class="interests-controller d-flex flex-column w-100 px-4 gap-2"
+              *ngIf="signUpForm.get('role')?.value == 'student'"
+            >
+              <span class="form-control-label">Interests</span>
+              <input
+                type="text"
+                pInputText
+                formControlName="interests"
+                placeholder="Enter your interests ..."
+              />
+            </div>
+
+            <div
+              class="paypal-controller d-flex flex-column w-100 px-4 gap-2"
+              *ngIf="signUpForm.get('role')?.value == 'instructor'"
+            >
+              <span class="form-control-label">PayPal Account</span>
+              <input
+                type="email"
+                pInputText
+                formControlName="paypalAccount"
+                placeholder="Enter your PayPal email ..."
+              />
+            </div>
+          </ng-container>
           <div class="d-flex w-100">
             <div
               class="password-controller d-flex w-50 px-4 gap-2 align-items-center"
@@ -108,7 +267,9 @@
               >
             </div>
             <div class="w-50 justify-content-end d-flex w-50 px-4 gap-2">
-              <button class="submit-btn">Create Your Account</button>
+              <button type="submit" class="submit-btn">
+                Create Your Account
+              </button>
             </div>
           </div>
           <div class="d-flex w-100">

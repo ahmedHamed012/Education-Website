@@ -47,7 +47,7 @@ body {
   background-color: #f2f2f7;
 }
 ::ng-deep {
-  input,
+  input:not([type="radio"]),
   input.p-inputtext.p-component.p-element.p-password-input.p-password-input,
   .p-dropdown {
     outline: none;
@@ -132,7 +132,7 @@ button.nav-btn {
   span {
     font-family: var(--mainFont);
   }
-  &:hover{
+  &:hover {
     background-color: #dbeee5;
-}
+  }
 }

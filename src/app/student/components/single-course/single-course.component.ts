@@ -15,16 +15,16 @@ import { Router } from '@angular/router';
     AvatarGroupModule,
     ProgressBarModule,
     ToastModule,
-    DividerModule,],
+    DividerModule,
+  ],
   templateUrl: './single-course.component.html',
-  styleUrl: './single-course.component.scss'
+  styleUrl: './single-course.component.scss',
 })
-
 export class SingleCourseComponent {
   constructor(private readonly router: Router) {}
   itemsArray = Array(10);
   relatedCoursesArray = Array(4);
   checkOutCourse() {
-    this.router.navigate(['/home/check-out']);
+    this.router.navigate(['/student/cart']);
   }
 }

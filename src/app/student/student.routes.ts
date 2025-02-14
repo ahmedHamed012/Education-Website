@@ -7,52 +7,58 @@ import { CartComponent } from './components/cart/cart.component';
 import { GradesComponent } from './components/grades/grades.component';
 import { PurchaseHistoryComponent } from './components/purchase-history/purchase-history.component';
 import { RatesComponent } from './components/rates/rates.component';
+import { SingleCourseComponent } from './components/single-course/single-course.component';
 
-export const routes: Routes =[
-    {
-        path:  '',
-        redirectTo: 'dashboard',
-        pathMatch: 'full',
-    },
-    {
-        path: '',
-        component: StudentComponent,
-        children: [
-            {
-                path: 'dashboard',
-                component: DashboardComponent,
-                title: 'Learn on | Dashboard',
-            },
-            {
-                path: 'account',
-                component: AccountComponent,
-                title: 'Learn on | Account',
-            },
-            {
-                path: 'all-courses',
-                component: AllCoursesComponent,
-                title: 'Learn on | All Courses',
-            },
-            {
-                path: 'cart',
-                component: CartComponent,
-                title: 'Learn on | Cart',
-            },
-            {
-                path: 'grades',
-                component: GradesComponent,
-                title: 'Learn on | Grades',
-            },
-            {
-                path: 'purchase-history',
-                component: PurchaseHistoryComponent,
-                title: 'Learn on | Purchase History',
-            },
-            {
-                path: 'rates',
-                component: RatesComponent,
-                title: 'Learn on | Rates',
-            },
-        ]
-    }
-]
+export const routes: Routes = [
+  {
+    path: '',
+    redirectTo: 'dashboard',
+    pathMatch: 'full',
+  },
+  {
+    path: '',
+    component: StudentComponent,
+    children: [
+      {
+        path: 'dashboard',
+        component: DashboardComponent,
+        title: 'Learn on | Dashboard',
+      },
+      {
+        path: 'account',
+        component: AccountComponent,
+        title: 'Learn on | Account',
+      },
+      {
+        path: 'all-courses',
+        component: AllCoursesComponent,
+        title: 'Learn on | All Courses',
+      },
+      {
+        path: 'course',
+        component: SingleCourseComponent,
+        title: 'Learn on | Corse',
+      },
+      {
+        path: 'cart',
+        component: CartComponent,
+        title: 'Learn on | Cart',
+      },
+      {
+        path: 'grades',
+        component: GradesComponent,
+        title: 'Learn on | Grades',
+      },
+      {
+        path: 'purchase-history',
+        component: PurchaseHistoryComponent,
+        title: 'Learn on | Purchase History',
+      },
+      {
+        path: 'rates',
+        component: RatesComponent,
+        title: 'Learn on | Rates',
+      },
+    ],
+  },
+];

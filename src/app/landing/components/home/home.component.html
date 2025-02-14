@@ -1,222 +1,303 @@
 <div class="container">
-    <section class="hero-sec sec-1 d-flex w-100 gap-5 my-3" style="height: 100vh">
-        <div class="hero-sec-info d-flex col flex-column py-5 justify-content-center">
-            <p class="hero-sec-info-title">Education without limits</p>
-            <p class="hero-sec-info-desc">
-                Our (Website Name) empowers individuals to achieve your goals through
-                expert-led courses and hands-on experience. With a user-friendly
-                platform, flexible learning options, and 24/7 support, we provide a
-                seamless and engaging educational journey. Whether you're advancing your
-                career or exploring a new passion, our (Website Name) is designed to
-                help you succeed at your own pace.
-            </p>
-            <p style="font-family: 'Poppins'; font-size: 0.98rem">
-                Expand your horizons with endless learning opportunities.
-            </p>
-            <div class="d-flex gap-3 align-items-center">
-                <input type="text" pInputText [(ngModel)]="value" placeholder="Enter your email" />
-                <button class="nav-btn" style="background-color: #006557; color: white" routerLink="/auth/register">
-                    Sign Up
-                </button>
-            </div>
-            <p style="font-size: 0.78rem; font-family: 'Poppins'; font-weight: bold" class="py-2">
-                By clicking Sign Up you're confirming that you agree with our
-                <a href="#">Terms and Conditions.</a>
-            </p>
-        </div>
-        <div class="hero-sec-img d-flex col d-none d-lg-block"></div>
-    </section>
-    <!------------------------------------------------------------------------------>
-    <section class="sec-2 popular-courses-sec my-5 d-flex flex-column gap-3">
-        <p class="sec-title text-center">Popular Courses</p>
-        <p class="sec-desc text-center">
-            "Explore a variety of courses across technology, engineering, and more.
-            Learn at your own pace with expert-led lessons, interactive content, and
-            practical insights to achieve your goals."
-        </p>
-        <div class="popular-courses d-flex flex-wrap gap-4 justify-content-center">
-            <div class="course col-12 col-md d-flex flex-column bg-white">
-                <div class="course-desc d-flex flex-column p-3 h-50">
-                    <p>Embedded System</p>
-                    <p>Computer Engineering Field</p>
-                    <div class="d-flex align-items-center gap-1">
-                        <a>Learn More</a>
-                        <i class="pi pi-angle-right px-2"></i>
-                    </div>
-                </div>
-                <div class="course-img h-50" style="
-                background-image: url('../../../assets/Images/embeded.jpeg');
-                background-size: cover;
-            "></div>
-            </div>
-            <div class="course col-12 col-md d-flex flex-column bg-white">
-                <div class="course-desc d-flex flex-column p-3 h-50">
-                    <p>Structural Analysis</p>
-                    <p>Computer Engineering Field</p>
-                    <div class="d-flex align-items-center gap-1">
-                        <a>Learn More</a>
-                        <i class="pi pi-angle-right px-2"></i>
-                    </div>
-                </div>
-                <div class="course-img h-50" style="
-                background-image: url('../../../assets/Images/structural_analysis.jpeg');
-                background-size: cover;
-            "></div>
-            </div>
-            <div class="course col-12 col-md d-flex flex-column bg-white">
-                <div class="course-desc d-flex flex-column p-3 h-50">
-                    <p>Renewable Energy</p>
-                    <p>Computer Engineering Field</p>
-                    <div class="d-flex align-items-center gap-1">
-                        <a>Learn More</a>
-                        <i class="pi pi-angle-right px-2"></i>
-                    </div>
-                </div>
-                <div class="course-img h-50" style="
-                background-image: url('../../../assets/Images/renewable.jpeg');
-                background-size: cover;
-            "></div>
-            </div>
-            <div class="course col-12 col-md d-flex flex-column bg-white">
-                <div class="course-desc d-flex flex-column p-3 h-50">
-                    <p>Robotics & Automation</p>
-                    <p>Computer Engineering Field</p>
-                    <div class="d-flex align-items-center gap-1">
-                        <a>Learn More</a>
-                        <i class="pi pi-angle-right px-2"></i>
-                    </div>
-                </div>
-                <div class="course-img h-50" style="
-                background-image: url('../../../assets/Images/robotics.jpeg');
-                background-size: cover;
-            "></div>
-            </div>
-        </div>
-        <button class="nav-btn px-3 align-self-center mt-4"
-            style="background-color: #006557; color: white; width: fit-content">
-            View All Courses
+  <section class="hero-sec sec-1 d-flex w-100 gap-5 my-3" style="height: 100vh">
+    <div
+      class="hero-sec-info d-flex col flex-column py-5 justify-content-center"
+    >
+      <p class="hero-sec-info-title">Education without limits</p>
+      <p class="hero-sec-info-desc">
+        Our (Website Name) empowers individuals to achieve your goals through
+        expert-led courses and hands-on experience. With a user-friendly
+        platform, flexible learning options, and 24/7 support, we provide a
+        seamless and engaging educational journey. Whether you're advancing your
+        career or exploring a new passion, our (Website Name) is designed to
+        help you succeed at your own pace.
+      </p>
+      <p style="font-family: 'Poppins'; font-size: 0.98rem">
+        Expand your horizons with endless learning opportunities.
+      </p>
+      <div class="d-flex gap-3 align-items-center">
+        <input
+          type="text"
+          pInputText
+          [(ngModel)]="value"
+          placeholder="Enter your email"
+        />
+        <button
+          class="nav-btn"
+          style="background-color: #006557; color: white"
+          routerLink="/auth/register"
+        >
+          Sign Up
         </button>
-    </section>
-    <!------------------------------------------------------------------------------>
+      </div>
+      <p
+        style="font-size: 0.78rem; font-family: 'Poppins'; font-weight: bold"
+        class="py-2"
+      >
+        By clicking Sign Up you're confirming that you agree with our
+        <a href="#">Terms and Conditions.</a>
+      </p>
+    </div>
+    <div class="hero-sec-img d-flex col d-none d-lg-block"></div>
+  </section>
+  <!------------------------------------------------------------------------------>
+  <section class="sec-2 popular-courses-sec my-5 d-flex flex-column gap-3">
+    <p class="sec-title text-center">Popular Courses</p>
+    <p class="sec-desc text-center">
+      "Explore a variety of courses across technology, engineering, and more.
+      Learn at your own pace with expert-led lessons, interactive content, and
+      practical insights to achieve your goals."
+    </p>
+    <div class="popular-courses d-flex flex-wrap gap-4 justify-content-center">
+      <div class="course col-12 col-md d-flex flex-column bg-white">
+        <div class="course-desc d-flex flex-column p-3 h-50">
+          <p>Embedded System</p>
+          <p>Computer Engineering Field</p>
+          <div class="d-flex align-items-center gap-1">
+            <a routerLink="/student/course">Learn More</a>
+            <i class="pi pi-angle-right px-2"></i>
+          </div>
+        </div>
+        <div
+          class="course-img h-50"
+          style="
+            background-image: url('../../../assets/Images/embeded.jpeg');
+            background-size: cover;
+          "
+        ></div>
+      </div>
+      <div class="course col-12 col-md d-flex flex-column bg-white">
+        <div class="course-desc d-flex flex-column p-3 h-50">
+          <p>Structural Analysis</p>
+          <p>Computer Engineering Field</p>
+          <div class="d-flex align-items-center gap-1">
+            <a routerLink="/student/course">Learn More</a>
+            <i class="pi pi-angle-right px-2"></i>
+          </div>
+        </div>
+        <div
+          class="course-img h-50"
+          style="
+            background-image: url('../../../assets/Images/structural_analysis.jpeg');
+            background-size: cover;
+          "
+        ></div>
+      </div>
+      <div class="course col-12 col-md d-flex flex-column bg-white">
+        <div class="course-desc d-flex flex-column p-3 h-50">
+          <p>Renewable Energy</p>
+          <p>Computer Engineering Field</p>
+          <div class="d-flex align-items-center gap-1">
+            <a routerLink="/student/course">Learn More</a>
+            <i class="pi pi-angle-right px-2"></i>
+          </div>
+        </div>
+        <div
+          class="course-img h-50"
+          style="
+            background-image: url('../../../assets/Images/renewable.jpeg');
+            background-size: cover;
+          "
+        ></div>
+      </div>
+      <div class="course col-12 col-md d-flex flex-column bg-white">
+        <div class="course-desc d-flex flex-column p-3 h-50">
+          <p>Robotics & Automation</p>
+          <p>Computer Engineering Field</p>
+          <div class="d-flex align-items-center gap-1">
+            <a routerLink="/student/course">Learn More</a>
+            <i class="pi pi-angle-right px-2"></i>
+          </div>
+        </div>
+        <div
+          class="course-img h-50"
+          style="
+            background-image: url('../../../assets/Images/robotics.jpeg');
+            background-size: cover;
+          "
+        ></div>
+      </div>
+    </div>
+    <button
+      class="nav-btn px-3 align-self-center mt-4"
+      style="background-color: #006557; color: white; width: fit-content"
+      routerLink="/all-courses"
+    >
+      View All Courses
+    </button>
+  </section>
+  <!------------------------------------------------------------------------------>
 </div>
 <section class="sec-3 who-we-are-sec my-5">
-    <div style="
-        background-color: rgba(255, 255, 255, 0.315);
-        width: 100%;
-        height: 100%;
-        " class="d-flex align-items-center">
-        <div class="container">
-            <p class="sec-title text-start">Who We Are</p>
-            <p class="sec-desc">
-                We are a versatile learning platform offering a wide range of courses
-                tailored for every stage of learning ( school students, undergraduates,
-                and graduates). Our goal is to provide quality education that meets the
-                needs of learners at all levels, empowering them to achieve their
-                academic and professional aspirations.
-            </p>
-            <div class="d-flex gap-3">
-                <button class="nav-btn" style="background-color: #006557; color: white">
-                    Signup
-                </button>
-                <button class="nav-btn" style="
-                background-color: transparent;
-                color: #006557;
-                border: 1px solid #006557;
-            ">
-                    Learn More
-                </button>
-            </div>
-        </div>
+  <div
+    style="
+      background-color: rgba(255, 255, 255, 0.315);
+      width: 100%;
+      height: 100%;
+    "
+    class="d-flex align-items-center"
+  >
+    <div class="container">
+      <p class="sec-title text-start">Who We Are</p>
+      <p class="sec-desc">
+        We are a versatile learning platform offering a wide range of courses
+        tailored for every stage of learning ( school students, undergraduates,
+        and graduates). Our goal is to provide quality education that meets the
+        needs of learners at all levels, empowering them to achieve their
+        academic and professional aspirations.
+      </p>
+      <div class="d-flex gap-3">
+        <button
+          class="nav-btn"
+          style="background-color: #006557; color: white"
+          routerLink="/auth/register"
+        >
+          Signup
+        </button>
+        <button
+          class="nav-btn"
+          style="
+            background-color: transparent;
+            color: #006557;
+            border: 1px solid #006557;
+          "
+        >
+          Learn More
+        </button>
+      </div>
     </div>
+  </div>
 </section>
 <!------------------------------------------------------------------------------>
 <section class="sec-4 why-choose-us">
-    <div class="container">
-        <p class="sec-title text-center my-5">Why Choose Us ?</p>
-        <section class="hero-sec sec-1 d-flex w-100 gap-5 my-3">
-            <div class="hero-sec-img d-flex col d-none d-lg-block">
-                <img src="assets/Images/laptop.jpeg" class="w-100" style="object-fit: cover" />
-            </div>
-            <div class="hero-sec-info d-flex col flex-column gap-5 justify-content-center">
-                <div class="benefit d-flex flex-column gap-2">
-                    <svg width="28" height="48" viewBox="0 0 28 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M14 2V46M24 10H9C7.14348 10 5.36301 10.7375 4.05025 12.0503C2.7375 13.363 2 15.1435 2 17C2 18.8565 2.7375 20.637 4.05025 21.9497C5.36301 23.2625 7.14348 24 9 24H19C20.8565 24 22.637 24.7375 23.9497 26.0503C25.2625 27.363 26 29.1435 26 31C26 32.8565 25.2625 34.637 23.9497 35.9497C22.637 37.2625 20.8565 38 19 38H2"
-                            stroke="#006557" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                    <p>Affordable</p>
-                    <p>Access quality education at competitive prices</p>
-                </div>
-                <!-------------------------------------------------->
-                <div class="benefit d-flex flex-column gap-2">
-                    <svg width="38" height="24" viewBox="0 0 38 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0 24V0L18 12L0 24ZM20 24V0L38 12L20 24Z" fill="#006557" />
-                    </svg>
+  <div class="container">
+    <p class="sec-title text-center my-5">Why Choose Us ?</p>
+    <section class="hero-sec sec-1 d-flex w-100 gap-5 my-3">
+      <div class="hero-sec-img d-flex col d-none d-lg-block">
+        <img
+          src="assets/Images/laptop.jpeg"
+          class="w-100"
+          style="object-fit: cover"
+        />
+      </div>
+      <div
+        class="hero-sec-info d-flex col flex-column gap-5 justify-content-center"
+      >
+        <div class="benefit d-flex flex-column gap-2">
+          <svg
+            width="28"
+            height="48"
+            viewBox="0 0 28 48"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M14 2V46M24 10H9C7.14348 10 5.36301 10.7375 4.05025 12.0503C2.7375 13.363 2 15.1435 2 17C2 18.8565 2.7375 20.637 4.05025 21.9497C5.36301 23.2625 7.14348 24 9 24H19C20.8565 24 22.637 24.7375 23.9497 26.0503C25.2625 27.363 26 29.1435 26 31C26 32.8565 25.2625 34.637 23.9497 35.9497C22.637 37.2625 20.8565 38 19 38H2"
+              stroke="#006557"
+              stroke-width="4"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <p>Affordable</p>
+          <p>Access quality education at competitive prices</p>
+        </div>
+        <!-------------------------------------------------->
+        <div class="benefit d-flex flex-column gap-2">
+          <svg
+            width="38"
+            height="24"
+            viewBox="0 0 38 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M0 24V0L18 12L0 24ZM20 24V0L38 12L20 24Z" fill="#006557" />
+          </svg>
 
-                    <p>Expert-Led Courses</p>
-                    <p>Learn from industry professionals with real-world experience.</p>
-                </div>
-                <!-------------------------------------------------->
-                <div class="benefit d-flex flex-column gap-2">
-                    <svg width="44" height="40" viewBox="0 0 44 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M22 10C22 7.87827 21.1571 5.84344 19.6569 4.34315C18.1566 2.84285 16.1217 2 14 2H2V32H16C17.5913 32 19.1174 32.6321 20.2426 33.7574C21.3679 34.8826 22 36.4087 22 38M22 10V38M22 10C22 7.87827 22.8429 5.84344 24.3431 4.34315C25.8434 2.84285 27.8783 2 30 2H42V32H28C26.4087 32 24.8826 32.6321 23.7574 33.7574C22.6321 34.8826 22 36.4087 22 38"
-                            stroke="#006557" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                    <p>Flexible Learning</p>
-                    <p>Study at your own pace, anytime, anywhere.</p>
-                </div>
-                <!-------------------------------------------------->
-                <div class="benefit d-flex flex-column gap-2">
-                    <svg width="40" height="38" viewBox="0 0 40 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M7.65 38L10.9 23.95L0 14.5L14.4 13.25L20 0L25.6 13.25L40 14.5L29.1 23.95L32.35 38L20 30.55L7.65 38Z"
-                            fill="#006557" />
-                    </svg>
-                    <p>Instructors</p>
-                    <p>Learn from expert instructors dedicated to your success.</p>
-                </div>
-            </div>
-        </section>
-    </div>
+          <p>Expert-Led Courses</p>
+          <p>Learn from industry professionals with real-world experience.</p>
+        </div>
+        <!-------------------------------------------------->
+        <div class="benefit d-flex flex-column gap-2">
+          <svg
+            width="44"
+            height="40"
+            viewBox="0 0 44 40"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M22 10C22 7.87827 21.1571 5.84344 19.6569 4.34315C18.1566 2.84285 16.1217 2 14 2H2V32H16C17.5913 32 19.1174 32.6321 20.2426 33.7574C21.3679 34.8826 22 36.4087 22 38M22 10V38M22 10C22 7.87827 22.8429 5.84344 24.3431 4.34315C25.8434 2.84285 27.8783 2 30 2H42V32H28C26.4087 32 24.8826 32.6321 23.7574 33.7574C22.6321 34.8826 22 36.4087 22 38"
+              stroke="#006557"
+              stroke-width="4"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <p>Flexible Learning</p>
+          <p>Study at your own pace, anytime, anywhere.</p>
+        </div>
+        <!-------------------------------------------------->
+        <div class="benefit d-flex flex-column gap-2">
+          <svg
+            width="40"
+            height="38"
+            viewBox="0 0 40 38"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M7.65 38L10.9 23.95L0 14.5L14.4 13.25L20 0L25.6 13.25L40 14.5L29.1 23.95L32.35 38L20 30.55L7.65 38Z"
+              fill="#006557"
+            />
+          </svg>
+          <p>Instructors</p>
+          <p>Learn from expert instructors dedicated to your success.</p>
+        </div>
+      </div>
+    </section>
+  </div>
 </section>
 <!------------------------------------------------------------------------------>
 <section class="sec-5 py-5 position-relative">
-    <div style="
-        background-color: rgba(255, 255, 255, 0.603);
-        width: 100%;
-        height: 100%;
-        " class="d-flex align-items-center">
-        <div class="container d-flex flex-column gap-4">
-            <p class="sec-title text-center">
-                Chart Your Path to <span style="color: #006557">Success</span> and
-                Growth
-            </p>
-            <div class="d-flex gap-3 flex-wrap">
-                <div class="useful-properties col-12 col-lg">
-                    <p>1. Education</p>
-                    <p>
-                        Access world-class learning resources and structured programs
-                        designed to build a strong foundation and advance your expertise in
-                        any field.
-                    </p>
-                </div>
-                <div class="useful-properties col-12 col-lg">
-                    <p>2. Experience</p>
-                    <p>
-                        Gain practical, hands-on experience through real-world projects and
-                        case studies to enhance your skills and career readiness.
-                    </p>
-                </div>
-                <div class="useful-properties col-12 col-lg">
-                    <p>6. Certificate</p>
-                    <p>
-                        "Earn industry-recognized certificates to showcase your achievements
-                        and stand out in your professional journey."
-                    </p>
-                </div>
-            </div>
+  <div
+    style="
+      background-color: rgba(255, 255, 255, 0.603);
+      width: 100%;
+      height: 100%;
+    "
+    class="d-flex align-items-center"
+  >
+    <div class="container d-flex flex-column gap-4">
+      <p class="sec-title text-center">
+        Chart Your Path to <span style="color: #006557">Success</span> and
+        Growth
+      </p>
+      <div class="d-flex gap-3 flex-wrap">
+        <div class="useful-properties col-12 col-lg">
+          <p>1. Education</p>
+          <p>
+            Access world-class learning resources and structured programs
+            designed to build a strong foundation and advance your expertise in
+            any field.
+          </p>
         </div>
+        <div class="useful-properties col-12 col-lg">
+          <p>2. Experience</p>
+          <p>
+            Gain practical, hands-on experience through real-world projects and
+            case studies to enhance your skills and career readiness.
+          </p>
+        </div>
+        <div class="useful-properties col-12 col-lg">
+          <p>6. Certificate</p>
+          <p>
+            "Earn industry-recognized certificates to showcase your achievements
+            and stand out in your professional journey."
+          </p>
+        </div>
+      </div>
     </div>
+  </div>
 </section>
 <!------------------------------------------------------------------------------>
