@@ -16,6 +16,7 @@ export class AuthenticationService {
     private readonly router: Router
   ) {}
   private googleAuthUrl = 'http://localhost:8000/api/auth/google';
+  // private googleAuthUrl = 'http://localhost:5000/auth/google';
 
   // Redirect user to Google authentication
   loginWithGoogle() {
@@ -69,6 +70,19 @@ export class AuthenticationService {
     return this.http.post<any>(
       `${this.apiUrl}/reset-password?email=${resetPassword.email}&token=${resetPassword.token}&password=${resetPassword.password}&password_confirmation=${resetPassword.password_confirmation}`,
       {}
+    );
+  }
+  logout(): Observable<any> {
+    return this.http.post<any>(
+      `${this.apiUrl}/logout`,
+      {},
+      {
+        headers: {
+          authorization: `Bearer ${
+            localStorage.getItem('learn_on_token')?.split('|')[1]
+          }`,
+        },
+      }
     );
   }
 }

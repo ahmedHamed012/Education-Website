@@ -8,6 +8,7 @@ import { GradesComponent } from './components/grades/grades.component';
 import { PurchaseHistoryComponent } from './components/purchase-history/purchase-history.component';
 import { RatesComponent } from './components/rates/rates.component';
 import { SingleCourseComponent } from './components/single-course/single-course.component';
+import { SingleLectureComponent } from './components/single-lecture/single-lecture.component';
 
 export const routes: Routes = [
   {
@@ -35,7 +36,7 @@ export const routes: Routes = [
         title: 'Learn on | All Courses',
       },
       {
-        path: 'course',
+        path: 'course/:courseId',
         component: SingleCourseComponent,
         title: 'Learn on | Corse',
       },
