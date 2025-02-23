@@ -37,22 +37,34 @@ export class SingleCourseComponent {
   instructorInfo!: any;
   ratings!: any;
   studentFeedbacks!: any[];
+  relatedCourses!: any[];
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe((params) => {
-      const courseId = params.get('courseId');
-      this.courseService.getCourseById(courseId as string).subscribe({
-        next: (result) => {
-          this.courseInfo = result.data ?? result;
-          this.ratings = this.courseInfo.course_rating.ratingPercentages;
-          this.studentFeedbacks = this.courseInfo.students_feedbacks;
-          this.instructorService
-            .getInstructorById(this.courseInfo.instructor['id'])
-            .subscribe({
+      let courseId!: any;
+      this.activatedRoute.queryParamMap.subscribe((params) => {
+        courseId = params.get('courseId');
+        this.courseService.getCourseById(courseId as string).subscribe({
+          next: (result) => {
+            this.courseInfo = result.data ?? result;
+            this.ratings = this.courseInfo.course_rating.ratingPercentages;
+            this.studentFeedbacks = this.courseInfo.students_feedbacks;
+            this.instructorService
+              .getInstructorById(this.courseInfo.instructor['id'])
+              .subscribe({
+                next: (result) => {
+                  this.instructorInfo = result.data ?? result;
+                },
+              });
+            this.courseService.getRelatedCourses(courseId as string).subscribe({
               next: (result) => {
-                this.instructorInfo = result.data ?? result;
+                this.relatedCourses = result.related_courses ?? result;
+              },
+              error: (err) => {
+                console.log(err);
               },
             });
-        },
+          },
+        });
       });
     });
   }
@@ -72,5 +84,15 @@ export class SingleCourseComponent {
   }
   checkOutCourse() {
     this.router.navigate(['/student/cart']);
+  }
+
+  navigate(courseId: string) {
+    const url = this.router
+      .createUrlTree(['/student/course'], {
+        queryParams: { courseId },
+      })
+      .toString();
+
+    window.open(url, '_blank'); // Opens in a new tab
   }
 }
