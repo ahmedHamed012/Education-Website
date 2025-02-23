@@ -13,6 +13,8 @@ import { PasswordModule } from 'primeng/password';
 import { AuthenticationService } from '../../../Core/Services/authentication.service';
 import { StepsModule } from 'primeng/steps';
 import { MenuItem } from 'primeng/api';
+import { IUser } from '../../../Core/Interfaces/create-user.interface';
+import { UserService } from '../../../Core/Services/user.service';
 
 @Component({
   selector: 'app-account',
@@ -37,11 +39,13 @@ export class AccountComponent {
   role!: string;
   email!: string;
   items: MenuItem[] | undefined;
+  userId!: string;
   public generalInfoTab: boolean = true;
   public securityInfoTab: boolean = false;
   constructor(
     private readonly authService: AuthenticationService,
-    private readonly fb: FormBuilder
+    private readonly fb: FormBuilder,
+    private readonly userService: UserService
   ) {}
 
   public userProfileForm: FormGroup = this.fb.group({
@@ -103,6 +107,7 @@ export class AccountComponent {
         this.lastName = userData.last_name;
         this.username = userData.username;
         this.role = result['user'].role;
+        this.userId = result['user'].id;
         this.email = result['user'].email;
         this.username = this.firstName + ' ' + this.lastName;
         this.userProfileForm.patchValue({
@@ -124,5 +129,47 @@ export class AccountComponent {
     });
   }
 
-  updateUserProfileData() {}
+  updateUserProfileData() {
+    const registerData = this.userProfileForm.value;
+    const basicsData = {
+      first_name: registerData.firstName,
+      last_name: registerData.lastName,
+      email: registerData.email,
+      role: registerData.role,
+      password: registerData.password,
+      password_confirmation: registerData.confirmPassword,
+      username: registerData.userName,
+      gender: registerData.gender,
+      date_of_birth: registerData.dateOfBirth,
+      phone: registerData.phone,
+      country: registerData.country,
+    };
+
+    const studentData: IUser = {
+      ...basicsData,
+      education: registerData.education,
+      interests: registerData.interests,
+    };
+
+    const instructorData: IUser = {
+      ...basicsData,
+      about: registerData.about || '',
+      major: registerData.major,
+      paypal_account: registerData.paypalAccount,
+    };
+
+    const newUserData: IUser =
+      this.role == 'student' ? studentData : instructorData;
+
+    this.userService
+      .updateUserProfile(newUserData, this.userId as string)
+      .subscribe({
+        next: (result) => {
+          console.log(result);
+        },
+        error: (err) => {
+          console.error(err);
+        },
+      });
+  }
 }

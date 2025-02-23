@@ -70,8 +70,13 @@ export class LandingNavbarComponent {
             label: 'Logout',
             icon: 'pi pi-sign-out',
             command: () => {
-              localStorage.removeItem('learn_on_token');
-              this.router.navigate(['/auth/login']);
+              this.authService.logout().subscribe({
+                next: (result) => {
+                  localStorage.removeItem('learn_on_token');
+                  localStorage.removeItem('learn_on_device_token');
+                  this.router.navigate(['/auth/login']);
+                },
+              });
             },
           },
         ],

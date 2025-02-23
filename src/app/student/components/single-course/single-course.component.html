@@ -1,8 +1,7 @@
 <div class="container d-flex py-5">
   <div class="col">
     <p class="m-2 mb-3 course-title">
-      Complete Website Responsive Design: from Figma to Webflow to Website
-      Design
+      {{ courseInfo.title }}
     </p>
     <div class="creator-and-rating d-flex">
       <div class="col d-flex gap-3">
@@ -14,7 +13,9 @@
         />
         <div class="creator-info d-flex flex-column justify-content-start">
           <p class="m-0 created-by-title">Created By:</p>
-          <p class="m-0 created-by-instructor">Dianna Smith</p>
+          <p class="m-0 created-by-instructor">
+            {{ courseInfo.instructor["name"] }}
+          </p>
         </div>
       </div>
       <div
@@ -27,26 +28,30 @@
           <i class="pi pi-star-fill px-1" style="color: #004c41"></i>
           <i class="pi pi-star-fill px-1" style="color: #004c41"></i>
         </div>
-        <span class="rating">4.9</span>
-        <span class="raters-no"> (451,444 Rating)</span>
+        <span class="rating">{{
+          courseInfo.course_rating["average_rating"]
+        }}</span>
+        <span class="raters-no">
+          ({{ courseInfo.course_rating["total_reviews"] }} Rating)</span
+        >
       </div>
     </div>
     <div class="video-container d-flex gap-3 my-4">
       <div class="col col-md-8">
-        <!-- <video controls poster="assets/Images/video-cover.jpeg" class="w-100">
-                    <source src="example-video.mp4" type="video/mp4" />
-                    <source src="example-video.webm" type="video/webm" />
-                    Your browser does not support the video tag.
-                </video> -->
-        <iframe
+        <video controls poster="assets/Images/video-cover.jpeg" class="w-100">
+          <source src="example-video.mp4" type="video/mp4" />
+          <source src="example-video.webm" type="video/webm" />
+          Your browser does not support the video tag.
+        </video>
+        <!-- <iframe
           src="https://drive.google.com/file/d/1uxv5IaN_e7GGVXAteJrdNHUfsjMntOn-/preview"
           height="480"
           allow="autoplay"
           class="w-100"
-        ></iframe>
+        ></iframe> -->
       </div>
       <div class="col price-container p-3">
-        <p class="text-center">$14.09</p>
+        <p class="text-center">${{ courseInfo.course_price }}</p>
         <p-divider />
         <div class="d-flex mb-2">
           <div
@@ -55,7 +60,7 @@
             <i class="pi pi-stopwatch"></i> <span>Course Duration</span>
           </div>
           <div class="course-price d-flex col justify-content-end">
-            6 Months
+            {{ courseInfo.course_duration }}
           </div>
         </div>
         <div class="d-flex mb-2">
@@ -65,7 +70,7 @@
             <i class="pi pi-sliders-h"></i><span>Course Level</span>
           </div>
           <div class="course-price d-flex col justify-content-end">
-            Intermediate
+            {{ courseInfo.course_level }}
           </div>
         </div>
         <div class="d-flex mb-2">
@@ -74,7 +79,9 @@
           >
             <i class="pi pi-users"></i><span>Students Enrolled</span>
           </div>
-          <div class="course-price d-flex col justify-content-end">654</div>
+          <div class="course-price d-flex col justify-content-end">
+            {{ courseInfo.students_enrolled }}
+          </div>
         </div>
         <p-divider />
         <div class="d-flex w-100 justify-content-cen">
@@ -85,43 +92,7 @@
     <div class="video-description">
       <h3 class="course-desc-title">Description</h3>
       <p class="course-desc">
-        It gives you a huge self-satisfaction when you look at your work and
-        say, "I made this!". I love that feeling after I'm done working on
-        something. When I lean back in my chair, look at the final result with a
-        smile, and have this little "spark joy" moment. It's especially
-        satisfying when I know I just made $5,000.<br /><br />
-        I do! And that's why I got into this field. Not for the love of Web
-        Design, which I do now. But for the LIFESTYLE! There are many ways one
-        can achieve this lifestyle. This is my way. This is how I achieved a
-        lifestyle I've been fantasizing about for five years. And I'm going to
-        teach you the same. Often people think Web Design is complicated. That
-        it needs some creative talent or knack for computers. Sure, a lot of
-        people make it very complicated. People make the simplest things
-        complicated. Like most subjects taught in the universities. But I don't
-        like complicated. I like easy. I like life hacks. I like to take the
-        shortest and simplest route to my destination. I haven't gone to an art
-        school or have a computer science degree. I'm an outsider to this field
-        who hacked himself into it, somehow ending up being a sought-after
-        professional. That's how I'm going to teach you Web Design. So you're
-        not demotivated on your way with needless complexity. So you enjoy the
-        process because it's simple and fun. So you can become a Freelance Web
-        Designer in no time.<br /><br />
-        For example, this is a Design course but I don't teach you Photoshop.
-        Because Photoshop is needlessly complicated for Web Design. But people
-        still teach it to web designers. I don't. I teach Figma – a simple tool
-        that is taking over the design world. You will be designing a complete
-        website within a week while others are still learning how to create
-        basic layouts in Photoshop.<br /><br />
-        Second, this is a Development course. But I don't teach you how to code.
-        Because for Web Design coding is needlessly complicated and takes too
-        long to learn. Instead, I teach Webflow – a tool that is taking over the
-        web design world. You will be building complex websites within two weeks
-        while others are still learning the basics of HTML & CSS. Third, this is
-        a Freelancing course. But I don't just teach you how to write great
-        proposals. I give you a winning proposal template. When you're done with
-        the course, you will have a stunning portfolio website with portfolio
-        pieces already in it. Buy this course now and take it whenever the time
-        is right for you.
+        {{ courseInfo.description }}
       </p>
     </div>
     <div class="course-instructor d-flex flex-column my-4">
@@ -138,37 +109,35 @@
         <div class="col d-flex px-3 my-4">
           <div class="instructor-info d-flex flex-column gap-2">
             <div class="d-flex flex-column">
-              <span class="rating">Vako Shvili</span>
-              <span class="raters-no"
-                >Web Designer & Best-Selling Instructor</span
-              >
+              <span class="rating">{{ instructorInfo.name }}</span>
+              <span class="raters-no">{{ instructorInfo.about }}</span>
             </div>
             <div class="d-flex gap-3">
               <div class="d-flex align-items-center col gap-2">
                 <i class="pi pi-star-fill px-1" style="color: #004c41"></i>
                 <span class="rating"
-                  >4.9 <span class="raters-no">Course Rating</span></span
+                  >{{ instructorInfo.rate }}
+                  <span class="raters-no">Course Rating</span></span
                 >
               </div>
               <div class="d-flex align-items-center col gap-2">
                 <i class="pi pi-users px-1" style="color: #004c41"></i>
                 <span class="rating"
-                  >236,568 <span class="raters-no">Students</span></span
+                  >{{ instructorInfo.students_count }}
+                  <span class="raters-no">Students</span></span
                 >
               </div>
               <div class="d-flex align-items-center col gap-2">
                 <i class="pi pi-youtube px-1" style="color: #004c41"></i>
                 <span class="rating"
-                  >09 <span class="raters-no">Courses</span></span
+                  >{{ instructorInfo.courses.length }}
+                  <span class="raters-no">Courses</span></span
                 >
               </div>
             </div>
             <div class="d-flex my-2">
               <p class="course-desc">
-                One day Vako had enough with the 9-to-5 grind, or more like
-                9-to-9 in his case, and quit his job, or more like got himself
-                fired from his own startup. He decided to work on his dream: be
-                his own boss, travel the world, only do the work he enjoyed...
+                {{ instructorInfo.about }}
               </p>
             </div>
           </div>
@@ -182,7 +151,9 @@
         <div
           class="col-3 d-flex flex-column gap-2 py-3 justify-content-center align-items-center card"
         >
-          <span class="rating" style="font-size: 2rem">4.8</span>
+          <span class="rating" style="font-size: 2rem">{{
+            courseInfo.course_rating["average_rating"]
+          }}</span>
           <div class="course-rating-in-stars">
             <i class="pi pi-star-fill px-1" style="color: #004c41"></i>
             <i class="pi pi-star-fill px-1" style="color: #004c41"></i>
@@ -193,7 +164,7 @@
           <span class="rating" style="font-size: 0.9rem">Course Rating</span>
         </div>
         <div class="col">
-          <div class="d-flex gap-3 align-items-center">
+          <!-- <div class="d-flex gap-3 align-items-center">
             <div class="course-rating-in-stars col-3">
               <i class="pi pi-star-fill px-1" style="color: #004c41"></i>
               <i class="pi pi-star-fill px-1" style="color: #004c41"></i>
@@ -217,14 +188,18 @@
             >
               <div
                 class="progress"
-                style="height: 100%; width: 50%; background-color: #004c41"
+                [ngStyle]="{
+                  height: '100%',
+                  width: courseInfo.course_rating['ratingPercentages'][0] + '%',
+                  'background-color': '#004c41'
+                }"
               ></div>
             </div>
             <div class="col-1">
               <span
                 class="rating"
                 style="font-size: 0.9rem; font-weight: normal"
-                >50%</span
+                >{{ courseInfo.course_rating["ratingPercentages"][0] }}</span
               >
             </div>
           </div>
@@ -371,13 +346,66 @@
                 >1%</span
               >
             </div>
+          </div> -->
+          <div
+            *ngFor="let rating of getRatingsArray(); let i = index"
+            class="d-flex gap-3 align-items-center"
+          >
+            <!-- Stars Representation -->
+            <div class="course-rating-in-stars col-3">
+              <i
+                *ngFor="let star of getStarsArray(i + 1)"
+                class="pi pi-star-fill px-1"
+                style="color: #004c41"
+              ></i>
+              <i
+                *ngFor="let emptyStar of getEmptyStarsArray(i + 1)"
+                class="pi pi-star px-1"
+              ></i>
+            </div>
+
+            <!-- Star Rating Text -->
+            <div class="col-2">
+              <span class="raters-no">{{ i + 1 }} Star Rating</span>
+            </div>
+
+            <!-- Progress Bar -->
+            <div
+              class="progress-bar col"
+              style="
+                height: 10px;
+                background-color: #eee;
+                width: 100%;
+                overflow: hidden;
+                border-radius: 7px;
+                border: 1px solid #004c415e;
+              "
+            >
+              <div
+                class="progress"
+                [ngStyle]="{
+                  height: '100%',
+                  width: rating.value,
+                  'background-color': '#004c41'
+                }"
+              ></div>
+            </div>
+
+            <!-- Percentage Display -->
+            <div class="col-1">
+              <span
+                class="rating"
+                style="font-size: 0.9rem; font-weight: normal"
+                >{{ rating.value }}</span
+              >
+            </div>
           </div>
         </div>
       </div>
     </div>
     <div class="students-feedback">
       <h3 class="course-desc-title py-4">Students Feedback</h3>
-      @for (item of itemsArray; track $index) {
+      @for (comment of studentFeedbacks; track $index) {
       <div class="feedback d-flex align-items-start">
         <div class="col-1">
           <p-avatar
@@ -389,20 +417,24 @@
         </div>
         <div class="col d-flex flex-column gap-2">
           <span class="rating" style="font-weight: 500"
-            >John Doe . <span class="raters-no">4 weeks ago</span></span
+            >{{ comment.student["name"] }}
+            <span class="raters-no">{{
+              comment.created_at | date : "short"
+            }}</span></span
           >
           <div class="course-rating-in-stars">
-            <i class="pi pi-star-fill px-1" style="color: #004c41"></i>
-            <i class="pi pi-star-fill px-1" style="color: #004c41"></i>
-            <i class="pi pi-star-fill px-1" style="color: #004c41"></i>
-            <i class="pi pi-star-fill px-1" style="color: #004c41"></i>
-            <i class="pi pi-star-fill px-1" style="color: #004c41"></i>
+            <i
+              *ngFor="let star of getStarsArray(comment.rate)"
+              class="pi pi-star-fill px-1"
+              style="color: #004c41"
+            ></i>
+            <i
+              *ngFor="let star of getEmptyStarsArray(comment.rate)"
+              class="pi pi-star px-1"
+            ></i>
           </div>
           <p class="course-desc">
-            I appreciate the precise short videos (10 mins or less each) because
-            overly long videos tend to make me lose focus. The instructor is
-            very knowledgeable in Web Design and it shows as he shares his
-            knowledge. These were my best 6 months of training. Thanks, Vako.
+            {{ comment.comment }}
           </p>
         </div>
       </div>
