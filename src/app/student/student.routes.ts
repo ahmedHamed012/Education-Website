@@ -36,7 +36,7 @@ export const routes: Routes = [
         title: 'Learn on | All Courses',
       },
       {
-        path: 'course/:courseId',
+        path: 'course',
         component: SingleCourseComponent,
         title: 'Learn on | Corse',
       },

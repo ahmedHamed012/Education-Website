@@ -445,10 +445,12 @@
       <h3 class="course-desc-title py-4">Related Courses</h3>
 
       <div class="d-flex flex-wrap gap-3">
-        @for (item of relatedCoursesArray; track $index) {
+        @for (item of relatedCourses; track $index) {
         <div
-          class="col d-flex flex-column"
+          class="col col-lg-3 d-flex flex-column"
           style="border: 1px solid rgba(0, 0, 0, 0.377)"
+          (click)="navigate(item.id)"
+          [ngStyle]="{ cursor: 'pointer' }"
         >
           <div class="h-50">
             <img
@@ -460,15 +462,17 @@
             <div class="d-flex my-2">
               <div class="property-chip col d-flex justify-content-start">
                 <div>
-                  <span>Design</span>
+                  <span>{{ item.category }}</span>
                 </div>
               </div>
-              <div class="course-price d-flex col justify-content-end">$57</div>
+              <div class="course-price d-flex col justify-content-end">
+                ${{ item.price }}
+              </div>
             </div>
             <span
               class="rating py-1"
               style="font-size: 0.8rem; font-weight: normal"
-              >The Complete 2022 Web Development Bootcamp</span
+              >{{ item.title }}</span
             >
             <hr />
             <div class="d-flex">
@@ -476,11 +480,13 @@
                 class="property-chip col-1 d-flex justify-content-start align-items-center"
               >
                 <i class="pi pi-star-fill px-1" style="color: #004c41"></i>
-                <span class="rating" style="font-size: 1rem">5.0</span>
+                <span class="rating" style="font-size: 1rem">{{
+                  item.rating
+                }}</span>
               </div>
               <div class="course-price d-flex col justify-content-end">
                 <span class="raters-no py-2"
-                  >265.7K <span> students</span></span
+                  >{{ item.students_enrolled }} <span> students</span></span
                 >
               </div>
             </div>

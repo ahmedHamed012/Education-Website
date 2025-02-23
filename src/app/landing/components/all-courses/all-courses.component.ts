@@ -52,6 +52,8 @@ export class AllCoursesComponent {
   }
 
   buyCourse(course: any) {
-    this.router.navigate([`/student/course/${course.id}`]);
+    this.router.navigate([`/student/course`], {
+      queryParams: { courseId: course.id },
+    });
   }
 }

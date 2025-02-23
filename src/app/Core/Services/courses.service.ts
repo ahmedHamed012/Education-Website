@@ -22,4 +22,8 @@ export class CoursesService {
   getCourseById(courseId: string): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/courses/${courseId}`);
   }
+
+  getRelatedCourses(courseId: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/courses/${courseId}/related`);
+  }
 }
