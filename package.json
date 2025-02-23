@@ -24,7 +24,7 @@
     "chart.js": "^4.4.5",
     "jwt-decode": "^4.0.0",
     "primeicons": "^7.0.0",
-    "primeng": "^17.18.11",
+    "primeng": "^17.18.15",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.2"

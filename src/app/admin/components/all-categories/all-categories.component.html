@@ -1,1 +1,7 @@
-<p>all-categories works!</p>
+<app-admin-table
+    [caption]="'Categories'"
+    [dataHeaders]="['id', 'name', 'description']"
+    [dataList]="categories"
+    [actionVisibility]="true"
+    [buttonLabel]="'Add Category'"
+></app-admin-table>

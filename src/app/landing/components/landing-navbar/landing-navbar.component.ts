@@ -9,7 +9,7 @@ import { AvatarGroupModule } from 'primeng/avatargroup';
 import { BadgeModule } from 'primeng/badge';
 import { MenuItem } from 'primeng/api';
 import { Router } from '@angular/router';
-import { jwtDecode } from 'jwt-decode';
+// import { jwtDecode } from 'jwt-decode';
 import { AuthenticationService } from '../../../Core/Services/authentication.service';
 
 @Component({

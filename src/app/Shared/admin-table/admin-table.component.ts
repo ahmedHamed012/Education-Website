@@ -8,7 +8,7 @@ import { TableModule } from 'primeng/table';
   templateUrl: './admin-table.component.html',
   styleUrl: './admin-table.component.scss',
 })
-export class AdminTableComponent {
+export class AdminTableComponent {  
   @Input() caption: string = '';
   @Input() dataHeaders: Array<any> = [];
   @Input() dataList: Array<any> = [];
