@@ -49,9 +49,18 @@ export class AuthenticationService {
     return this.http.post<any>(`${this.apiUrl}/register`, { ...userData });
   }
   getLoggedInUserData(token: string): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/profile`, {
+    return this.http.get<any>(`${this.apiUrl}/student/profile`, {
       headers: {
         Authorization: `Bearer ${token}`,
+        'Device-Token': localStorage.getItem('learn_on_device_token') ?? '',
+      },
+    });
+  }
+  getLoggedInAdminData(token: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/admin/profile`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Device-Token': localStorage.getItem('learn_on_device_token') ?? '',
       },
     });
   }
