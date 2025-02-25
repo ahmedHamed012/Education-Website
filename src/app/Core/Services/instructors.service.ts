@@ -16,7 +16,7 @@ export class InstructorService {
   ) {}
 
   getAllInstructors(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/landingPage/instructors`);
+    return this.http.get(`${this.apiUrl}/instructors`);
   }
 
   getInstructorById(instructorId: string): Observable<any> {

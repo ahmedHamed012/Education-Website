@@ -48,6 +48,17 @@ export class AuthenticationService {
   register(userData: IUser): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/register`, { ...userData });
   }
+  updateUserPassword(
+    currentPassword: string,
+    newPassword: string,
+    confirmPassword: string
+  ): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/update-password`, {
+      current_password: currentPassword,
+      new_password: newPassword,
+      confirm_new_password: confirmPassword,
+    });
+  }
   getLoggedInUserData(token: string): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/student/profile`, {
       headers: {

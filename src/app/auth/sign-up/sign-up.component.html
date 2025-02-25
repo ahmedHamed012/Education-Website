@@ -31,14 +31,14 @@
   </div>
 </nav>
 <div class="d-flex w-100">
-  <div class="image d-flex w-50">
+  <div class="image d-md-flex col d-none">
     <img
       src="assets/Images/sign_up_avatar.png"
       class="w-100 object-fit-cover"
     />
   </div>
   <div
-    class="form d-flex w-50 bg-white justify-content-center align-items-center py-4"
+    class="form d-flex col bg-white justify-content-center align-items-center py-4"
   >
     <div class="w-100">
       <form [formGroup]="signUpForm" (ngSubmit)="register()">
@@ -257,16 +257,18 @@
               />
             </div>
           </ng-container>
-          <div class="d-flex w-100">
+          <div class="d-flex flex-column flex-md-row w-100">
             <div
-              class="password-controller d-flex w-50 px-4 gap-2 align-items-center"
+              class="password-controller d-flex col px-4 gap-2 align-items-center"
             >
               <p-checkbox formControlName="agreement" [value]="true" />
               <label class="px-2" style="font-family: 'Poppins'"
                 >I Agree with all of your Terms & Conditions</label
               >
             </div>
-            <div class="w-50 justify-content-end d-flex w-50 px-4 gap-2">
+            <div
+              class="col justify-content-center justify-content-md-end d-flex px-4 gap-2"
+            >
               <button type="submit" class="submit-btn">
                 Create Your Account
               </button>
@@ -279,7 +281,9 @@
               >
             </p-divider>
           </div>
-          <div class="d-flex w-100 px-4 gap-2 justify-content-center">
+          <div
+            class="d-flex w-100 px-4 gap-2 flex-column flex-md-row justify-content-center align-items-center"
+          >
             <button
               class="social-btns d-flex gap-3 align-items-center px-3"
               style="
