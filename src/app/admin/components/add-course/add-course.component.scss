@@ -1,0 +1,198 @@
+// Navigation Tab
+.nav-tabs .nav-link {
+    color: black ; 
+}
+
+.nav-tabs .nav-link.active {
+    color: #006557;
+    font-weight: bold; 
+}
+
+// Step One
+.stepone select,
+input {
+    width: 300px;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+
+}
+
+label {
+    display: block;
+}
+
+#title {
+    width: 1250px;
+}
+
+#semester,
+#level,
+#startDate,
+#endDate,
+#instructor {
+    width: 600px;
+}
+
+.preBtn {
+    background-color: #c9cacfb2;
+    color: #626775;
+    width: 250px;
+}
+
+.nextBtn {
+    background-color: #006557;
+    color: white;
+    width: 250px;
+}
+
+#nextOne {
+    margin-left: 1000px;
+}
+
+// Step two
+.card {
+    border: none;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.thumbnail-box {
+    height: 120px;
+}
+
+.video-box {
+    height: 96px;
+}
+
+.thumbnail-box,
+.video-box {
+    width: 120px;
+    border-radius: 10px;
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    color: #6c757d;
+    margin: 0 auto;
+}
+
+.thumbnail-box i,
+.video-box i {
+    font-size: 50px;
+}
+
+.uplaodData {
+    color: #006557;
+    border-color: #006557;
+}
+
+.uplaodData:hover {
+    color: white;
+    background-color: #006557;
+}
+
+.preview-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.preview-video {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+// Step 3
+.lecture-container {
+    width: 100%;
+    max-width: 1300px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.lecture-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+}
+
+.lecture-details {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.lecture-input-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.drag-icon {
+    cursor: grab;
+    padding: 0 10px;
+    font-size: 20px;
+    color: #888;
+}
+
+.lecture-input {
+    flex: 1;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    margin-bottom: 5px;
+    width: 100%;
+}
+
+.link-input {
+    margin-top: 5px;
+}
+
+.action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    margin-left: 10px;
+}
+
+.trash-icon {
+    width: 20px;
+    height: 20px;
+    color: #d9534f;
+    transition: color 0.3s;
+}
+
+.trash-icon:hover {
+    color: #c9302c;
+}
+
+.add-section-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #E6F6F4;
+    color: #006557;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.add-section-btn:hover {
+    background-color: #d4f4f0;
+}

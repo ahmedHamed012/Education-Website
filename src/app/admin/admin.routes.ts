@@ -8,6 +8,7 @@ import { AllCategoriesComponent } from './components/all-categories/all-categori
 import { AllAdminsComponent } from './components/all-admins/all-admins.component';
 import { AllPurchasesComponent } from './components/all-purchases/all-purchases.component';
 import { AccountComponent } from './components/account/account.component';
+import { AddCourseComponent } from './components/add-course/add-course.component';
 
 export const routes: Routes = [
     {
@@ -28,6 +29,11 @@ export const routes: Routes = [
                 path: 'all-courses',
                 component: AllCoursesComponent,
                 title: 'Learn-on | All Courses',
+            },
+            {
+                path: 'add-course',
+                component: AddCourseComponent,
+                title: 'Learn-on | Add New Course'
             },
             {
                 path: 'all-instructors',
