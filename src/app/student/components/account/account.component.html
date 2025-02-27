@@ -1,3 +1,4 @@
+<p-toast></p-toast>
 <div class="account-settings my-5">
   <h2>Account settings</h2>
 
@@ -96,13 +97,18 @@
 
   <ng-container *ngIf="securityInfoTab">
     <h3 class="py-4">Change password</h3>
-    <form class="password-form d-flex flex-wrap">
+    <form
+      class="password-form d-flex flex-wrap"
+      [formGroup]="passwordChangeForm"
+      (ngSubmit)="updateProfilePassword()"
+    >
       <div class="form-group password col-12 w-100">
         <label>Current Password</label>
         <p-password
           [toggleMask]="true"
           [feedback]="false"
           placeholder="Enter your password ..."
+          formControlName="currentPassword"
         />
       </div>
       <div class="col-12 d-flex gap-2 my-3">
@@ -113,6 +119,7 @@
             [feedback]="false"
             placeholder="Enter your password ..."
             class="w-100"
+            formControlName="newPassword"
           />
         </div>
         <div class="form-group password col">
@@ -121,6 +128,7 @@
             [toggleMask]="true"
             [feedback]="false"
             placeholder="Enter your password ..."
+            formControlName="confirmPassword"
           />
         </div>
       </div>

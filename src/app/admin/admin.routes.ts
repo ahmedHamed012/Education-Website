@@ -8,6 +8,7 @@ import { AllCategoriesComponent } from './components/all-categories/all-categori
 import { AllAdminsComponent } from './components/all-admins/all-admins.component';
 import { AllPurchasesComponent } from './components/all-purchases/all-purchases.component';
 import { AccountComponent } from './components/account/account.component';
+import { AdminRoutesGuard } from '../Core/Guards/admin.guard';
 import { AddCourseComponent } from './components/add-course/add-course.component';
 
 export const routes: Routes = [
@@ -33,7 +34,7 @@ export const routes: Routes = [
             {
                 path: 'add-course',
                 component: AddCourseComponent,
-                title: 'Learn-on | Add New Course'
+                title: 'Learn-on | Add Course'
             },
             {
                 path: 'all-instructors',
@@ -65,6 +66,6 @@ export const routes: Routes = [
                 component: AccountComponent,
                 title: 'Learn-on | Account',
             },
-        ]
-    }
-]
+        ],
+    },
+];

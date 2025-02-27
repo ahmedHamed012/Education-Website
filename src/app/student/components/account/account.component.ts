@@ -12,9 +12,11 @@ import { DividerModule } from 'primeng/divider';
 import { PasswordModule } from 'primeng/password';
 import { AuthenticationService } from '../../../Core/Services/authentication.service';
 import { StepsModule } from 'primeng/steps';
-import { MenuItem } from 'primeng/api';
+import { MenuItem, MessageService } from 'primeng/api';
 import { IUser } from '../../../Core/Interfaces/create-user.interface';
 import { UserService } from '../../../Core/Services/user.service';
+import { Router } from '@angular/router';
+import { ToastModule } from 'primeng/toast';
 
 @Component({
   selector: 'app-account',
@@ -27,6 +29,7 @@ import { UserService } from '../../../Core/Services/user.service';
     DividerModule,
     PasswordModule,
     StepsModule,
+    ToastModule,
   ],
   templateUrl: './account.component.html',
   styleUrl: './account.component.scss',
@@ -45,7 +48,9 @@ export class AccountComponent {
   constructor(
     private readonly authService: AuthenticationService,
     private readonly fb: FormBuilder,
-    private readonly userService: UserService
+    private readonly userService: UserService,
+    private readonly router: Router,
+    private readonly messageService: MessageService
   ) {}
 
   public userProfileForm: FormGroup = this.fb.group({
@@ -64,6 +69,13 @@ export class AccountComponent {
     interests: [null, []],
     paypalAccount: [null, [Validators.email]],
   });
+
+  public passwordChangeForm: FormGroup = this.fb.group({
+    currentPassword: [null, []],
+    newPassword: [null, []],
+    confirmPassword: [null, []],
+  });
+
   activeIndex: number = 0;
   profileImage: any = null; // Holds the selected image URL
 
@@ -165,10 +177,45 @@ export class AccountComponent {
       .updateUserProfile(newUserData, this.userId as string)
       .subscribe({
         next: (result) => {
-          console.log(result);
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Operation Success',
+            detail: 'Your Profile Updated Successfully',
+          });
         },
         error: (err) => {
-          console.error(err);
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Operation Failed',
+            detail: 'There is a problem in the profile update operation',
+          });
+        },
+      });
+  }
+
+  updateProfilePassword() {
+    const currentPassword =
+      this.passwordChangeForm.get('currentPassword')?.value;
+    const newPassword = this.passwordChangeForm.get('newPassword')?.value;
+    const confirmPassword =
+      this.passwordChangeForm.get('confirmPassword')?.value;
+    this.authService
+      .updateUserPassword(currentPassword, newPassword, confirmPassword)
+      .subscribe({
+        next: (result) => {
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Operation Success',
+            detail: 'Your Password Updated Successfully',
+          });
+        },
+        error: (err) => {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Operation Failed',
+            detail:
+              'There is a problem in the profile update password operation',
+          });
         },
       });
   }

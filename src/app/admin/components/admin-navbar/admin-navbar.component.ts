@@ -8,11 +8,13 @@ import { AvatarModule } from 'primeng/avatar';
 import { AvatarGroupModule } from 'primeng/avatargroup';
 import { BadgeModule } from 'primeng/badge';
 import { MenuItem } from 'primeng/api';
+import { AuthenticationService } from '../../../Core/Services/authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-navbar',
   standalone: true,
-  imports: [    
+  imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
@@ -24,10 +26,20 @@ import { MenuItem } from 'primeng/api';
     BadgeModule,
   ],
   templateUrl: './admin-navbar.component.html',
-  styleUrl: './admin-navbar.component.scss'
+  styleUrl: './admin-navbar.component.scss',
 })
 export class AdminNavbarComponent {
   items: MenuItem[] | undefined;
+  token = localStorage.getItem('learn_on_token');
+  username!: string;
+  firstName!: string;
+  lastName!: string;
+  role!: string;
+
+  constructor(
+    private readonly authService: AuthenticationService,
+    private readonly router: Router
+  ) {}
 
   ngOnInit() {
     this.items = [
@@ -35,19 +47,17 @@ export class AdminNavbarComponent {
         label: 'Profile',
         items: [
           {
-            label: 'Settings',
-            icon: 'pi pi-cog',
-            shortcut: '⌘+O',
-          },
-          {
-            label: 'Messages',
-            icon: 'pi pi-inbox',
-            badge: '2',
-          },
-          {
             label: 'Logout',
             icon: 'pi pi-sign-out',
-            shortcut: '⌘+Q',
+            command: () => {
+              this.authService.logout().subscribe({
+                next: (result) => {
+                  localStorage.removeItem('learn_on_token');
+                  localStorage.removeItem('learn_on_device_token');
+                  this.router.navigate(['/auth/login']);
+                },
+              });
+            },
           },
         ],
       },
@@ -55,5 +65,16 @@ export class AdminNavbarComponent {
         separator: true,
       },
     ];
+    this.authService
+      .getLoggedInAdminData(this.token?.split('|')[1] as string)
+      .subscribe({
+        next: (result) => {
+          this.username = result['user']['details'].name;
+          this.firstName = this.username.split(' ')[0];
+          this.lastName =
+            this.username.split(' ')[this.username.split(' ').length - 1];
+          this.role = result['user'].role;
+        },
+      });
   }
 }

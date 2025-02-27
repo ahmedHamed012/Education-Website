@@ -8,12 +8,16 @@ import {
   UrlTree,
 } from '@angular/router';
 import { map, Observable } from 'rxjs';
+import { AuthenticationService } from '../Services/authentication.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthenticationGuard implements CanActivate {
-  constructor(private readonly router: Router) {}
+  constructor(
+    private readonly router: Router,
+    private readonly authService: AuthenticationService
+  ) {}
   canActivate(): Observable<boolean> | Promise<boolean> | boolean {
     //   const tokenExist: string | null = window.localStorage.getItem('token');
     //   if (!tokenExist || tokenExist.trim() === '') {
@@ -48,9 +52,15 @@ export class AuthenticationGuard implements CanActivate {
     //     }
     //   })
     // );
-    const tokenExist = window.localStorage.getItem('fresh_harvest_token');
+    const tokenExist = window.localStorage.getItem('learn_on_token');
     if (!tokenExist || tokenExist == '') {
-      this.router.navigate(['/auth/login']);
+      this.authService.logout().subscribe({
+        next: (result) => {
+          localStorage.removeItem('learn_on_token');
+          localStorage.removeItem('learn_on_device_token');
+          this.router.navigate(['/auth/login']);
+        },
+      });
       return false;
     } else {
       return true;

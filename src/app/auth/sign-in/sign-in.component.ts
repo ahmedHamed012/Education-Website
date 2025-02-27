@@ -52,11 +52,18 @@ export class SignInComponent {
         const token = result.token;
         const deviceToken = result.device_token;
         const userRole = result['user']['role'];
+
         localStorage.setItem('learn_on_token', token);
         localStorage.setItem('learn_on_device_token', deviceToken);
-        if (userRole == 'student') {
-          this.router.navigate(['/']);
-        }
+
+        setTimeout(() => {
+          console.log(userRole);
+          if (userRole === 'admin') {
+            this.router.navigate(['/admin']);
+          } else {
+            this.router.navigate(['/']);
+          }
+        }, 0);
       },
       error: (err) => {
         this.messageService.add({

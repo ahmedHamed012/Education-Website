@@ -5,17 +5,17 @@
     >
       <p class="hero-sec-info-title">Education without limits</p>
       <p class="hero-sec-info-desc">
-        Our (Website Name) empowers individuals to achieve your goals through
+        Our Learn On empowers individuals to achieve your goals through
         expert-led courses and hands-on experience. With a user-friendly
         platform, flexible learning options, and 24/7 support, we provide a
         seamless and engaging educational journey. Whether you're advancing your
-        career or exploring a new passion, our (Website Name) is designed to
-        help you succeed at your own pace.
+        career or exploring a new passion, our Learn On is designed to help you
+        succeed at your own pace.
       </p>
       <p style="font-family: 'Poppins'; font-size: 0.98rem">
         Expand your horizons with endless learning opportunities.
       </p>
-      <div class="d-flex gap-3 align-items-center">
+      <!-- <div class="d-flex gap-3 align-items-center">
         <input
           type="text"
           pInputText
@@ -36,7 +36,7 @@
       >
         By clicking Sign Up you're confirming that you agree with our
         <a href="#">Terms and Conditions.</a>
-      </p>
+      </p> -->
     </div>
     <div class="hero-sec-img d-flex col d-none d-lg-block"></div>
   </section>
@@ -49,12 +49,13 @@
       practical insights to achieve your goals."
     </p>
     <div class="popular-courses d-flex flex-wrap gap-4 justify-content-center">
+      @for (course of popularCourses; track $index) {
       <div class="course col-12 col-md d-flex flex-column bg-white">
         <div class="course-desc d-flex flex-column p-3 h-50">
-          <p>Embedded System</p>
-          <p>Computer Engineering Field</p>
+          <p>{{ course.title }}</p>
+          <p>{{ course.category_name }}</p>
           <div class="d-flex align-items-center gap-1">
-            <a routerLink="/student/course">Learn More</a>
+            <a (click)="navigateToCourse(course.id)">Learn More</a>
             <i class="pi pi-angle-right px-2"></i>
           </div>
         </div>
@@ -66,57 +67,7 @@
           "
         ></div>
       </div>
-      <div class="course col-12 col-md d-flex flex-column bg-white">
-        <div class="course-desc d-flex flex-column p-3 h-50">
-          <p>Structural Analysis</p>
-          <p>Computer Engineering Field</p>
-          <div class="d-flex align-items-center gap-1">
-            <a routerLink="/student/course">Learn More</a>
-            <i class="pi pi-angle-right px-2"></i>
-          </div>
-        </div>
-        <div
-          class="course-img h-50"
-          style="
-            background-image: url('../../../assets/Images/structural_analysis.jpeg');
-            background-size: cover;
-          "
-        ></div>
-      </div>
-      <div class="course col-12 col-md d-flex flex-column bg-white">
-        <div class="course-desc d-flex flex-column p-3 h-50">
-          <p>Renewable Energy</p>
-          <p>Computer Engineering Field</p>
-          <div class="d-flex align-items-center gap-1">
-            <a routerLink="/student/course">Learn More</a>
-            <i class="pi pi-angle-right px-2"></i>
-          </div>
-        </div>
-        <div
-          class="course-img h-50"
-          style="
-            background-image: url('../../../assets/Images/renewable.jpeg');
-            background-size: cover;
-          "
-        ></div>
-      </div>
-      <div class="course col-12 col-md d-flex flex-column bg-white">
-        <div class="course-desc d-flex flex-column p-3 h-50">
-          <p>Robotics & Automation</p>
-          <p>Computer Engineering Field</p>
-          <div class="d-flex align-items-center gap-1">
-            <a routerLink="/student/course">Learn More</a>
-            <i class="pi pi-angle-right px-2"></i>
-          </div>
-        </div>
-        <div
-          class="course-img h-50"
-          style="
-            background-image: url('../../../assets/Images/robotics.jpeg');
-            background-size: cover;
-          "
-        ></div>
-      </div>
+      }
     </div>
     <button
       class="nav-btn px-3 align-self-center mt-4"

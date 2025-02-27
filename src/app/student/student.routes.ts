@@ -41,6 +41,11 @@ export const routes: Routes = [
         title: 'Learn on | Corse',
       },
       {
+        path: 'lecture',
+        component: SingleLectureComponent,
+        title: 'Learn on | Corse',
+      },
+      {
         path: 'cart',
         component: CartComponent,
         title: 'Learn on | Cart',

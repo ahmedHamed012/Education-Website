@@ -19,11 +19,26 @@ export class CoursesService {
     return this.http.get<any>(`${this.apiUrl}/courses`);
   }
 
+  getMyCourses(): Observable<any> {
+    const token = localStorage.getItem('learn_on_token')?.split('|')[1] ?? ''; // Ensure it's always a string
+    const deviceToken = localStorage.getItem('learn_on_device_token') ?? ''; // Ensure it's always a string
+    return this.http.get<any>(`${this.apiUrl}/student/mycourses`, {
+      headers: {
+        authorization: `Bearer ${token}`,
+        'Device-Token': deviceToken,
+      },
+    });
+  }
+
   getCourseById(courseId: string): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/courses/${courseId}`);
   }
 
   getRelatedCourses(courseId: string): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/courses/${courseId}/related`);
+  }
+
+  getPopularCourses(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/PopularCourses`);
   }
 }
