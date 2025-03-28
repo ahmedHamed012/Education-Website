@@ -14,6 +14,7 @@ import { Router, RouterLink } from '@angular/router';
 import { AuthenticationService } from '../../Core/Services/authentication.service';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
+import { DialogModule } from 'primeng/dialog';
 
 @Component({
   selector: 'app-sign-in',
@@ -27,11 +28,14 @@ import { ToastModule } from 'primeng/toast';
     DividerModule,
     RouterLink,
     ToastModule,
+    DialogModule,
   ],
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.scss',
 })
 export class SignInComponent {
+  public visible: boolean = false;
+  public resetEmail: string = '';
   constructor(
     private readonly fb: FormBuilder,
     private readonly authService: AuthenticationService,
@@ -78,5 +82,24 @@ export class SignInComponent {
 
   loginWithGoogle() {
     this.authService.loginWithGoogle();
+  }
+
+  public forgetPassword() {
+    this.authService.forgetPassword(this.resetEmail).subscribe({
+      next: (response) => {
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Done',
+          detail: `${response?.message}`,
+        });
+      },
+      error: (err) => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Failed',
+          detail: `${err?.error.message}`,
+        });
+      },
+    });
   }
 }

@@ -1,0 +1,40 @@
+<div class="instructor-profile animate__animated animate__fadeIn">
+  <div class="profile-header d-flex align-items-center">
+    <img
+      [src]="instructor?.image"
+      [alt]="instructor?.name"
+      class="profile-img"
+    />
+    <div class="profile-info">
+      <h2 class="name">{{ instructor?.name }}</h2>
+      <p class="rate">
+        ⭐ {{ instructor?.rate.toFixed(1) }} / 5.0 ({{
+          instructor?.students_count
+        }}
+        students)
+      </p>
+    </div>
+  </div>
+
+  <div class="profile-details">
+    <p class="about">{{ instructor?.about }}</p>
+
+    <h3 class="courses-title">Courses:</h3>
+    <ul class="courses-list">
+      <li
+        *ngFor="let course of instructor?.courses"
+        class="course animate__animated animate__fadeInUp"
+      >
+        📚 {{ course?.title }}
+        <a
+          (click)="viewCourse(course?.id)"
+          [ngStyle]="{
+            cursor: 'pointer'
+          }"
+        >
+          <i class="pi pi-external-link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

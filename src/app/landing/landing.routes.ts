@@ -7,6 +7,7 @@ import { FAQComponent } from './components/faq/faq.component';
 import { AllCoursesComponent } from './components/all-courses/all-courses.component';
 import { AllInstructorsComponent } from './components/all-instructors/all-instructors.component';
 import { MyCoursesComponent } from './components/my-courses/my-courses.component';
+import { InstructorProfileComponent } from './components/instructor-profile/instructor-profile.component';
 
 export const routes: Routes = [
   {

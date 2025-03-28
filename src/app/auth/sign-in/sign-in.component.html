@@ -78,6 +78,22 @@
               </button>
             </div>
           </div>
+          <div class="d-flex w-100 flex-column flex-md-row">
+            <div
+              class="password-controller d-flex col px-4 gap-2 align-items-center"
+            >
+              <label
+                class="px-2"
+                style="
+                  font-family: 'Poppins';
+                  text-decoration: underline;
+                  cursor: pointer;
+                "
+                (click)="visible = true"
+                >Forget Password ?</label
+              >
+            </div>
+          </div>
           <!-- <div class="d-flex w-100">
             <p-divider align="center" type="solid" class="w-100">
               <span style="font-family: 'Poppins'; color: #0000005e"
@@ -120,4 +136,54 @@
       </form>
     </div>
   </div>
+  <p-dialog
+    header="Reset Password"
+    [modal]="true"
+    [(visible)]="visible"
+    [style]="{ width: '35rem' }"
+  >
+    <div class="container d-flex flex-column gap-3">
+      <ng-container>
+        <div
+          class="verify-email-container d-flex flex-column align-items-start"
+        >
+          <p
+            class="h5 m-0 my-2"
+            style="font-weight: bold; color: #424242; font-family: 'Poppins'"
+          >
+            Write your email to detect your identity
+          </p>
+          <p
+            style="
+              font-family: 'Poppins';
+              color: rgba(0, 0, 0, 0.342);
+              font-size: 0.9rem;
+            "
+          >
+            We need to verify your email address to start the password recovery
+            process. Please enter the email associated with your account, and we
+            will send you a one-time password (OTP) to proceed.
+          </p>
+          <img
+            src="assets/Images/forget.jpg"
+            width="200"
+            height="auto"
+            alt=""
+            class="align-self-center"
+          />
+          <input
+            type="email"
+            id="email"
+            [(ngModel)]="resetEmail"
+            required
+            placeholder="Write your Email"
+            class="input"
+          />
+          <button class="submit-btn mt-3 w-100" (click)="forgetPassword()">
+            Send Mail
+          </button>
+        </div>
+      </ng-container>
+    </div>
+  </p-dialog>
 </div>

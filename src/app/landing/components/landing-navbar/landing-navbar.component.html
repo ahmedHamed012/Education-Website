@@ -41,7 +41,7 @@
             ><i class="pi pi-book px-2"></i>All Courses</a
           >
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="token">
           <a class="nav-link" routerLink="/my-courses"
             ><i class="pi pi-graduation-cap px-2"></i>My Courses</a
           >
@@ -98,11 +98,7 @@
               class="d-flex gap-2 align-items-center mx-auto"
               style="background: none; border: none"
             >
-              <p-avatar
-                image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png"
-                class="mr-2"
-                shape="circle"
-              />
+              <p-avatar [image]="avatar" class="mr-2" shape="circle" />
               <span
                 class="d-inline-flex flex-column"
                 style="font-family: 'Poppins'"
@@ -125,11 +121,7 @@
             border: none;
           "
         >
-          <p-avatar
-            image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png"
-            class="mr-2"
-            shape="circle"
-          />
+          <p-avatar [image]="avatar" class="mr-2" shape="circle" />
           <span> {{ firstName }} </span>
           <i class="pi pi-angle-down"></i>
         </button>

@@ -6,9 +6,7 @@
   <div class="profile">
     <div class="profile-pic-container">
       <img
-        [src]="
-          userProfileForm.get('image')?.value || 'assets/Images/person_1.jpeg'
-        "
+        [src]="avatar || 'assets/Images/person_1.jpeg'"
         alt="Profile Picture"
         class="profile-pic"
       />

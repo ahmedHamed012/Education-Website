@@ -20,7 +20,6 @@ export const routes: Routes = [
   },
   {
     path: 'student',
-    canActivate: [StudentRoutesGuard],
     loadChildren: () =>
       import('./student/student.routes').then((m) => m.routes),
   },

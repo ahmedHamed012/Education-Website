@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
@@ -11,7 +11,7 @@ import { CoursesService } from '../../../Core/Services/courses.service';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
-export class HomeComponent {
+export class HomeComponent implements AfterViewInit {
   public value!: string;
   public popularCourses!: any[];
 
@@ -19,6 +19,21 @@ export class HomeComponent {
     private readonly courseService: CoursesService,
     private readonly router: Router
   ) {}
+  ngAfterViewInit() {
+    const text = 'Education without limits';
+    let index = 0;
+    const typingText = document.querySelector('.typing-text') as HTMLElement;
+
+    const typeEffect = () => {
+      if (index < text.length) {
+        typingText.innerHTML += text.charAt(index);
+        index++;
+        setTimeout(typeEffect, 100);
+      }
+    };
+
+    setTimeout(typeEffect, 500);
+  }
   ngOnInit() {
     this.courseService.getPopularCourses().subscribe({
       next: (result) => {

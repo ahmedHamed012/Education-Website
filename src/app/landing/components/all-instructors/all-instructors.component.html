@@ -17,7 +17,19 @@
           <i class="pi pi-star"></i>
         </span>
       </div>
-      <button class="view-profile-btn">View Profile</button>
+      <button class="view-profile-btn" (click)="viewProfile(profile.id)">
+        View Profile
+      </button>
     </div>
   </div>
 </div>
+<p-dialog
+  header="Instructor Profile"
+  [modal]="true"
+  [(visible)]="visible"
+  [style]="{ width: '35rem' }"
+>
+  <div class="container d-flex flex-column gap-3">
+    <app-instructor-profile></app-instructor-profile>
+  </div>
+</p-dialog>

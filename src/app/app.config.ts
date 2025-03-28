@@ -9,10 +9,13 @@ import {
 } from '@angular/common/http';
 import { loaderInterceptor } from './Core/Interceptors/loader.interceptor';
 import { MessageService } from 'primeng/api';
+import { httpErrorInterceptor } from './Core/Interceptors/http-error.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideHttpClient(withInterceptors([loaderInterceptor])),
+    provideHttpClient(
+      withInterceptors([loaderInterceptor, httpErrorInterceptor])
+    ),
     provideRouter(routes),
     importProvidersFrom(HttpClientModule),
     MessageService,

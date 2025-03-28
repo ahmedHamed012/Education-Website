@@ -87,9 +87,46 @@ export class SignUpComponent {
       },
     ];
   }
+  selectedFile: File | null = null; // Store selected file
+
+  onFileSelect(event: Event) {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      this.selectedFile = input.files[0]; // Store the file separately
+    }
+  }
+
   register() {
+    if (!this.signUpForm.valid) {
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Registration Error',
+        detail: 'There are missing fields',
+      });
+      return;
+    }
+
     const registerData = this.signUpForm.value;
 
+    if (registerData.password !== registerData.confirmPassword) {
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Incorrect Password',
+        detail: "The password and the confirm password don't match",
+      });
+      return;
+    }
+
+    if (!registerData.agreement) {
+      this.messageService.add({
+        severity: 'warn',
+        summary: 'License Acceptance Required',
+        detail: 'You must agree to the terms & conditions',
+      });
+      return;
+    }
+
+    // Construct basicsData object
     const basicsData = {
       first_name: registerData.firstName,
       last_name: registerData.lastName,
@@ -104,55 +141,48 @@ export class SignUpComponent {
       country: registerData.country,
     };
 
-    const studentData: IUser = {
-      ...basicsData,
-      education: registerData.education,
-      interests: registerData.interests,
-    };
-
-    const instructorData: IUser = {
-      ...basicsData,
-      about: registerData.about || '',
-      major: registerData.major,
-      paypal_account: registerData.paypalAccount,
-    };
-
+    // Construct studentData or instructorData based on role
     const newUserData: IUser =
-      this.signUpForm.get('role')?.value == 'student'
-        ? studentData
-        : instructorData;
+      registerData.role === 'student'
+        ? {
+            ...basicsData,
+            education: registerData.education,
+            interests: registerData.interests,
+          }
+        : {
+            ...basicsData,
+            about: registerData.about || '',
+            major: registerData.major,
+            paypal_account: registerData.paypalAccount,
+          };
 
-    if (!this.signUpForm.valid) {
-      this.messageService.add({
-        severity: 'error',
-        summary: 'Registration Error',
-        detail: 'There are missing fields',
-      });
+    // Create FormData object
+    const formData = new FormData();
+
+    // Append fields to FormData
+    Object.entries(newUserData).forEach(([key, value]) => {
+      if (value !== null && value !== undefined) {
+        if (typeof value === 'object') {
+          formData.append(key, JSON.stringify(value)); // Convert objects to JSON strings
+        } else {
+          formData.append(key, value.toString());
+        }
+      }
+    });
+
+    // Append image file separately
+    if (this.selectedFile) {
+      formData.append('image', this.selectedFile);
     }
 
-    if (registerData.password !== registerData.confirmPassword) {
-      this.messageService.add({
-        severity: 'error',
-        summary: 'Incorrect Password',
-        detail: "The password and the confirm password doesn't match",
-      });
-    }
-
-    if (!registerData.agreement) {
-      this.messageService.add({
-        severity: 'warn',
-        summary: 'License Acceptance Required',
-        detail: 'You must agree the terms & conditions',
-      });
-    }
-
-    this.authService.register(newUserData).subscribe({
+    // Send request
+    this.authService.register(formData).subscribe({
       next: (result) => {
         this.messageService.add({
           severity: 'success',
           summary: 'Registration Success',
           detail:
-            'Successfully Creating your account, you will be redirected to login page',
+            'Successfully created your account. You will be redirected to the login page.',
         });
         setTimeout(() => {
           this.router.navigate(['/auth/login']);
@@ -163,7 +193,7 @@ export class SignUpComponent {
           severity: 'error',
           summary: 'Registration Failed',
           detail:
-            'An error occurs while creating your account. Try again later',
+            'An error occurred while creating your account. Try again later.',
         });
         console.error(err);
       },
