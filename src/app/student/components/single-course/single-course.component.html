@@ -11,8 +11,14 @@
 
       <div class="row align-items-center">
         <div class="col-12 col-md-6 d-flex gap-3 align-items-center">
+          <!-- <p-avatar
+            [image]="courseInfo.image"
+            class="mr-2"
+            size="large"
+            shape="circle"
+          /> -->
           <p-avatar
-            image="https://primefaces.org/cdn/primeng/images/demo/avatar/asiyajavayant.png"
+            [label]="courseInfo.instructor['name'].charAt(0)"
             class="mr-2"
             size="large"
             shape="circle"

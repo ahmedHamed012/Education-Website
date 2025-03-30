@@ -163,7 +163,12 @@
       <h2 class="my-5">Let’s start learning, {{ studentData?.name }}</h2>
       <div class="courses-section">
         <div class="course-card" *ngFor="let course of courses">
-          <img [src]="course.image" alt="Course Image" />
+          <!-- <img [src]="course.image ? course.image : 'assets/Images/no_img.png'" alt="Course Image" /> -->
+          <img
+            [src]="'assets/Images/no_img.png'"
+            alt="Course Image"
+            [ngStyle]="{ 'object-fit': 'contain' }"
+          />
           <div class="course-content">
             <p>{{ course.category }}</p>
             <h3>{{ course.title }}</h3>

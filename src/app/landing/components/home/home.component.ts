@@ -1,17 +1,26 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { CoursesService } from '../../../Core/Services/courses.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [InputTextModule, FormsModule, ReactiveFormsModule, RouterLink],
+  imports: [
+    CommonModule,
+    InputTextModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RouterLink,
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
 export class HomeComponent implements AfterViewInit {
+  @ViewChild('heroVideo', { static: false })
+  heroVideo!: ElementRef<HTMLVideoElement>;
   public value!: string;
   public popularCourses!: any[];
 
@@ -20,6 +29,11 @@ export class HomeComponent implements AfterViewInit {
     private readonly router: Router
   ) {}
   ngAfterViewInit() {
+    const video = this.heroVideo.nativeElement;
+    video.muted = true; // Ensure it's muted to comply with autoplay policies
+    video.play().catch((error) => {
+      console.error('Autoplay prevented:', error);
+    });
     const text = 'Education without limits';
     let index = 0;
     const typingText = document.querySelector('.typing-text') as HTMLElement;

@@ -77,8 +77,14 @@ section.sec-3 {
 }
 
 div.benefit {
-  margin-bottom: 30px;
+  display: flex;
+  align-items: start;
+  gap: 10px;
 
+  svg {
+    width: 32px;
+    height: 32px;
+  }
   p {
     font-family: "Poppins";
     margin: 0;

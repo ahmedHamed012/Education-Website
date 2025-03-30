@@ -151,6 +151,7 @@ export class SignUpComponent {
           }
         : {
             ...basicsData,
+            name: registerData.userName,
             about: registerData.about || '',
             major: registerData.major,
             paypal_account: registerData.paypalAccount,
