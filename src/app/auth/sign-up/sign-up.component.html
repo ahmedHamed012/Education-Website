@@ -41,7 +41,11 @@
     class="form d-flex col bg-white justify-content-center align-items-center py-4"
   >
     <div class="w-100">
-      <form [formGroup]="signUpForm" (ngSubmit)="register()">
+      <form
+        [formGroup]="signUpForm"
+        (ngSubmit)="register()"
+        type="multipart/form-data"
+      >
         <h2 class="sign-in-title w-100 text-center py-5">
           Create your account
         </h2>
@@ -228,7 +232,11 @@
 
             <div class="image-controller d-flex flex-column w-100 px-4 gap-2">
               <span class="form-control-label">Profile Image</span>
-              <input type="file" accept="image/*" formControlName="image" />
+              <input
+                type="file"
+                accept="image/*"
+                (change)="onFileSelect($event)"
+              />
             </div>
 
             <div

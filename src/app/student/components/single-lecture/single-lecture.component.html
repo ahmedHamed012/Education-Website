@@ -1,3 +1,4 @@
+<p-toast></p-toast>
 <div class="container my-4">
   <div class="video-section">
     <div class="header-buttons">
@@ -19,7 +20,7 @@
       </div>
       <span>{{ courseInfo.title }}</span>
       <div class="d-flex gap-3">
-        <button>Write A Review</button>
+        <button (click)="visible = true">Write A Review</button>
         <button>Next Lecture</button>
       </div>
     </div>
@@ -51,9 +52,9 @@
   <div class="container flex-column">
     <h3>Lecture Description</h3>
     <p style="line-height: 1.7">
-      {{ activeLecture[0].description }}
+      {{ activeLecture.description }}
     </p>
-    <ng-container *ngIf="activeLecture[0].lecture_notes">
+    <ng-container *ngIf="activeLecture.lecture_notes">
       <h3>Lecture Notes</h3>
       <p style="line-height: 1.7">
         In ut aliquet ante. Curabitur mollis tincidunt turpis, sed aliquam
@@ -87,10 +88,7 @@
   </div>
 </div>
 <div class="attachments my-5">
-  <div
-    class="container flex-column"
-    *ngIf="activeLecture[0].lecture_attachments"
-  >
+  <div class="container flex-column" *ngIf="activeLecture.lecture_attachments">
     <h3>Attachments (01)</h3>
     <div
       class="attachment d-flex justify-content-between align-items-center p-3 py-4"
@@ -133,9 +131,9 @@
           />
         </svg>
         <div class="att-name d-flex flex-column">
-          <span>{{ activeLecture[0].lecture_attachments.name }}</span>
+          <span>{{ activeLecture.lecture_attachments.name }}</span>
           <span style="color: #6e7485">{{
-            activeLecture[0].lecture_attachments.size
+            activeLecture.lecture_attachments.size
           }}</span>
         </div>
       </div>
@@ -189,3 +187,50 @@
   <p-divider />
   }
 </div> -->
+<p-dialog
+  [(visible)]="visible"
+  header="Submit Review"
+  [modal]="true"
+  [closable]="true"
+  [dismissableMask]="true"
+  [style]="{ width: '35rem' }"
+>
+  <div class="feedback-dialog">
+    <!-- Star Rating -->
+    <div class="rating-section">
+      <label for="rating">Rate your experience:</label>
+      <p-rating [(ngModel)]="rating" stars="5"></p-rating>
+    </div>
+
+    <!-- Comment Box -->
+    <div class="comment-section">
+      <label for="comment">Leave a comment:</label>
+      <textarea
+        id="comment"
+        [(ngModel)]="comment"
+        rows="4"
+        class="form-control"
+        placeholder="Write your feedback..."
+      ></textarea>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="submit-section text-center">
+      <button
+        style="
+          background-color: #004d40;
+          color: #fff;
+          font-size: 0.8rem;
+          border: none;
+          padding: 8px 16px;
+          border-radius: 4px;
+          cursor: pointer;
+        "
+        class="btn btn-primary"
+        (click)="submitReview()"
+      >
+        Submit Review
+      </button>
+    </div>
+  </div>
+</p-dialog>

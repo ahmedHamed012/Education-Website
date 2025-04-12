@@ -9,6 +9,7 @@ import { PurchaseHistoryComponent } from './components/purchase-history/purchase
 import { RatesComponent } from './components/rates/rates.component';
 import { SingleCourseComponent } from './components/single-course/single-course.component';
 import { SingleLectureComponent } from './components/single-lecture/single-lecture.component';
+import { StudentRoutesGuard } from '../Core/Guards/student.guard';
 
 export const routes: Routes = [
   {
@@ -22,11 +23,13 @@ export const routes: Routes = [
     children: [
       {
         path: 'dashboard',
+        canActivate: [StudentRoutesGuard],
         component: DashboardComponent,
         title: 'Learn on | Dashboard',
       },
       {
         path: 'account',
+        canActivate: [StudentRoutesGuard],
         component: AccountComponent,
         title: 'Learn on | Account',
       },
@@ -47,21 +50,25 @@ export const routes: Routes = [
       },
       {
         path: 'cart',
+        canActivate: [StudentRoutesGuard],
         component: CartComponent,
         title: 'Learn on | Cart',
       },
       {
         path: 'grades',
+        canActivate: [StudentRoutesGuard],
         component: GradesComponent,
         title: 'Learn on | Grades',
       },
       {
         path: 'purchase-history',
+        canActivate: [StudentRoutesGuard],
         component: PurchaseHistoryComponent,
         title: 'Learn on | Purchase History',
       },
       {
         path: 'rates',
+        canActivate: [StudentRoutesGuard],
         component: RatesComponent,
         title: 'Learn on | Rates',
       },

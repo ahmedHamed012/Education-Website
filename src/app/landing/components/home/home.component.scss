@@ -1,121 +1,211 @@
-section.hero-sec {
-    div.hero-sec-img {
-        background-image: url("../../../../assets/Images/hero-img.jpeg");
-        background-size: cover;
-        background-position: 50%;
-        background-repeat: no-repeat;
-    }
-}
+// section.hero-sec {
+//   div.hero-sec-img {
+//     background-image: url("../../../../assets/Images/hero-img.jpeg");
+//     background-size: cover;
+//     background-position: 50%;
+//     background-repeat: no-repeat;
+//   }
+// }
 
 p.hero-sec-info-title {
-    font-family: "Poppins";
-    font-weight: bold;
-    font-size: 2rem;
+  font-family: "Poppins";
+  font-weight: bold;
+  font-size: 2rem;
 }
 
 p.hero-sec-info-desc {
-    font-family: "Poppins";
-    font-size: 0.98rem;
-    color: #0000007a;
-    line-height: 1.7;
+  font-family: "Poppins";
+  font-size: 0.98rem;
+  color: #0000007a;
+  line-height: 1.7;
 }
 
 p.sec-title {
-    font-family: "Poppins";
-    font-weight: bold;
-    font-size: 2rem;
+  font-family: "Poppins";
+  font-weight: bold;
+  font-size: 2rem;
 }
 
 p.sec-desc {
-    font-family: "Poppins";
-    font-size: 0.98rem;
-    color: #0000007a;
-    line-height: 1.7;
+  font-family: "Poppins";
+  font-size: 0.98rem;
+  color: #0000007a;
+  line-height: 1.7;
 }
 
 div.course {
-    border: 1px solid #000;
-    height: 360px;
+  border: 1px solid #000;
+  height: 360px;
 
-    div.course-desc {
-        p {
-            font-family: "Poppins";
-            margin: 0;
-            margin-bottom: 10px;
+  div.course-desc {
+    p {
+      font-family: "Poppins";
+      margin: 0;
+      margin-bottom: 10px;
 
-            &:first-of-type {
-                font-weight: bold;
-                font-size: 1rem;
-            }
+      &:first-of-type {
+        font-weight: bold;
+        font-size: 1rem;
+      }
 
-            &:last-of-type {
-                font-size: 0.8rem;
-                color: #0000007a;
-                margin-bottom: 30px;
-            }
-        }
-
-        div {
-            &:last-child {
-                color: #006557;
-                font-size: 0.9rem;
-                font-family: "Poppins";
-                cursor: pointer;
-            }
-        }
+      &:last-of-type {
+        font-size: 0.8rem;
+        color: #0000007a;
+        margin-bottom: 30px;
+      }
     }
+
+    div {
+      &:last-child {
+        color: #006557;
+        font-size: 0.9rem;
+        font-family: "Poppins";
+        cursor: pointer;
+      }
+    }
+  }
 }
 
 section.sec-3 {
-    background-image: url("../../../../assets/Images/background_1.jpeg");
-    background-size: cover;
-    height: 70vh;
-    display: flex;
-    align-items: start;
-    justify-content: center;
-    flex-flow: column wrap;
+  background-image: url("../../../../assets/Images/background_1.jpeg");
+  background-size: cover;
+  height: 70vh;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  flex-flow: column wrap;
 }
 
 div.benefit {
-    margin-bottom: 30px;
+  display: flex;
+  align-items: start;
+  gap: 10px;
 
-    p {
-        font-family: "Poppins";
-        margin: 0;
+  svg {
+    width: 32px;
+    height: 32px;
+  }
+  p {
+    font-family: "Poppins";
+    margin: 0;
 
-        &:first-of-type {
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        &:last-of-type {
-            font-size: 0.9rem;
-            color: #0000007a;
-        }
+    &:first-of-type {
+      font-weight: bold;
+      font-size: 1.2rem;
     }
+
+    &:last-of-type {
+      font-size: 0.9rem;
+      color: #0000007a;
+    }
+  }
 }
 
 section.sec-5 {
-    background-image: url("../../../../assets/Images/background_2.jpeg");
-    background-size: cover;
-    height: fit-content;
+  background-image: url("../../../../assets/Images/background_2.jpeg");
+  background-size: cover;
+  height: fit-content;
 }
 
 div.useful-properties {
-    p {
-        font-family: "Poppins";
-        margin: 0;
-        text-align: center;
+  p {
+    font-family: "Poppins";
+    margin: 0;
+    text-align: center;
 
-        &:first-of-type {
-            font-weight: bold;
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-        }
-
-        &:last-of-type {
-            font-size: 1rem;
-            color: #006557;
-        }
+    &:first-of-type {
+      font-weight: bold;
+      font-size: 1.3rem;
+      margin-bottom: 10px;
     }
+
+    &:last-of-type {
+      font-size: 1rem;
+      color: #006557;
+    }
+  }
 }
+.hero-sec {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.hero-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 100%;
+  min-height: 100%;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); // Dark overlay for readability
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.hero-content {
+  max-width: 90%;
+}
+
+.typing-text {
+  font-size: 2.5rem;
+  font-weight: bold;
+  font-family: "Poppins", sans-serif;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid white;
+  width: 0;
+  //   animation: typing 4s steps(40, end) forwards, blink 0.75s step-end infinite;
+}
+
+// // Typing effect animation
+// @keyframes typing {
+//   from {
+//     width: 0;
+//   }
+//   to {
+//     width: 100%;
+//   }
+// }
+
+// @keyframes blink {
+//   50% {
+//     border-color: transparent;
+//   }
+// }
+
+// // Responsiveness Adjustments
+// @media (max-width: 768px) {
+//   .typing-text {
+//     font-size: 1.8rem;
+//   }
+
+//   .hero-content p {
+//     font-size: 0.9rem;
+//   }
+// }
+
+// @media (max-width: 480px) {
+//   .typing-text {
+//     font-size: 1.5rem;
+//   }
+
+//   .hero-content p {
+//     font-size: 0.85rem;
+//   }
+// }

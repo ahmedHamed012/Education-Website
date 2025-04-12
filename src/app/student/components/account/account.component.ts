@@ -17,6 +17,7 @@ import { IUser } from '../../../Core/Interfaces/create-user.interface';
 import { UserService } from '../../../Core/Services/user.service';
 import { Router } from '@angular/router';
 import { ToastModule } from 'primeng/toast';
+import { UtilsService } from '../../../Core/Services/utils.service';
 
 @Component({
   selector: 'app-account',
@@ -50,7 +51,8 @@ export class AccountComponent {
     private readonly fb: FormBuilder,
     private readonly userService: UserService,
     private readonly router: Router,
-    private readonly messageService: MessageService
+    private readonly messageService: MessageService,
+    private readonly utilsService: UtilsService
   ) {}
 
   public userProfileForm: FormGroup = this.fb.group({
@@ -78,6 +80,8 @@ export class AccountComponent {
 
   activeIndex: number = 0;
   profileImage: any = null; // Holds the selected image URL
+  selectedFile: File | null = null; // Store selected file
+  avatar!: any;
 
   onFileSelected(event: Event) {
     const file = (event.target as HTMLInputElement).files?.[0];
@@ -85,9 +89,13 @@ export class AccountComponent {
     if (file) {
       const reader = new FileReader();
       reader.onload = (e) => {
-        this.userProfileForm.patchValue({ image: e.target?.result });
+        this.avatar = e.target?.result;
       };
       reader.readAsDataURL(file);
+    }
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      this.selectedFile = input.files[0]; // Store the file separately
     }
   }
 
@@ -115,6 +123,7 @@ export class AccountComponent {
     this.authService.getLoggedInUserData(this.token as string).subscribe({
       next: (result) => {
         const userData = result['user']['details'];
+        this.avatar = this.utilsService.fixAssetUrl(userData.image);
         this.firstName = userData.first_name;
         this.lastName = userData.last_name;
         this.username = userData.username;
@@ -122,7 +131,7 @@ export class AccountComponent {
         this.userId = result['user'].id;
         this.email = result['user'].email;
         this.username = this.firstName + ' ' + this.lastName;
-        this.userProfileForm.patchValue({
+        this.authService.userDataSnippet.next({
           firstName: this.firstName,
           lastName: this.lastName,
           userName: this.username,
@@ -139,10 +148,14 @@ export class AccountComponent {
         });
       },
     });
+    this.authService.userDataSnippet.subscribe((value) =>
+      this.userProfileForm.patchValue(value)
+    );
   }
 
   updateUserProfileData() {
     const registerData = this.userProfileForm.value;
+
     const basicsData = {
       first_name: registerData.firstName,
       last_name: registerData.lastName,
@@ -157,30 +170,69 @@ export class AccountComponent {
       country: registerData.country,
     };
 
-    const studentData: IUser = {
-      ...basicsData,
-      education: registerData.education,
-      interests: registerData.interests,
-    };
-
-    const instructorData: IUser = {
-      ...basicsData,
-      about: registerData.about || '',
-      major: registerData.major,
-      paypal_account: registerData.paypalAccount,
-    };
-
+    // Construct studentData or instructorData based on role
     const newUserData: IUser =
-      this.role == 'student' ? studentData : instructorData;
+      registerData.role === 'student'
+        ? {
+            ...basicsData,
+            education: registerData.education,
+            interests: registerData.interests,
+          }
+        : {
+            ...basicsData,
+            about: registerData.about || '',
+            major: registerData.major,
+            paypal_account: registerData.paypalAccount,
+          };
+
+    // Create FormData object
+    const formData = new FormData();
+
+    // Append fields to FormData
+    Object.entries(newUserData).forEach(([key, value]) => {
+      if (value !== null && value !== undefined) {
+        if (typeof value === 'object') {
+          formData.append(key, JSON.stringify(value)); // Convert objects to JSON strings
+        } else {
+          formData.append(key, value.toString());
+        }
+      }
+    });
+
+    // Append image file separately
+    if (this.selectedFile) {
+      formData.append('image', this.selectedFile);
+    }
 
     this.userService
-      .updateUserProfile(newUserData, this.userId as string)
+      .updateUserProfile(formData, this.userId as string)
       .subscribe({
-        next: (result) => {
+        next: (response) => {
+          const result = response.data;
           this.messageService.add({
             severity: 'success',
             summary: 'Operation Success',
             detail: 'Your Profile Updated Successfully',
+          });
+          this.firstName = result.first_name;
+          this.lastName = result.last_name;
+          this.username = `${result.first_name} ${result.last_name}`;
+          this.email = result['user'].email;
+          this.authService.userDataSnippet.next({
+            firstName: this.firstName,
+            lastName: this.lastName,
+            userName: this.username,
+            email: this.email,
+            image: this.avatar,
+            dateOfBirth: result.date_of_birth,
+            gender: result.gender,
+            country: result.country,
+            phone: result.phone,
+            education: result.education ?? 'N/A',
+            about: result.about ?? 'N/A',
+            major: result.major ?? 'N/A',
+            interests: result.interests ?? 'N/A',
+            paypalAccount: result.paypal_account ?? 'N/A',
           });
         },
         error: (err) => {
@@ -208,6 +260,7 @@ export class AccountComponent {
             summary: 'Operation Success',
             detail: 'Your Password Updated Successfully',
           });
+          this.passwordChangeForm.reset();
         },
         error: (err) => {
           this.messageService.add({

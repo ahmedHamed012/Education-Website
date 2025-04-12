@@ -6,10 +6,26 @@ import { DividerModule } from 'primeng/divider';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CoursesService } from '../../../Core/Services/courses.service';
 import { LectureService } from '../../../Core/Services/lecture.service';
+import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
+import { DialogModule } from 'primeng/dialog';
+import { FormsModule } from '@angular/forms';
+import { RatingModule } from 'primeng/rating';
+import { AuthenticationService } from '../../../Core/Services/authentication.service';
 @Component({
   selector: 'app-single-lecture',
   standalone: true,
-  imports: [CommonModule, AvatarModule, AvatarGroupModule, DividerModule],
+  imports: [
+    CommonModule,
+    AvatarModule,
+    AvatarGroupModule,
+    DividerModule,
+    ToastModule,
+    DialogModule,
+    FormsModule,
+    RatingModule,
+    ToastModule,
+  ],
   templateUrl: './single-lecture.component.html',
   styleUrl: './single-lecture.component.scss',
 })
@@ -18,6 +34,8 @@ export class SingleLectureComponent {
     private readonly router: Router,
     private activatedRoute: ActivatedRoute,
     private readonly courseService: CoursesService,
+    private readonly authService: AuthenticationService,
+    private readonly messageService: MessageService,
     private readonly lectureService: LectureService,
     private readonly location: Location
   ) {}
@@ -27,6 +45,14 @@ export class SingleLectureComponent {
   itemsArray = Array(10);
   lectures!: any[];
   activeLecture: any;
+  visible: boolean = false;
+  rating: number = 0;
+  comment: string = '';
+  #studentId: string = '';
+  #token: string = localStorage.getItem('learn_on_token')?.split('|')[1] ?? '';
+  openDialog() {
+    this.visible = true;
+  }
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe((params) => {
       let courseId!: any;
@@ -47,26 +73,82 @@ export class SingleLectureComponent {
       this.lectureService.getLectureData(courseId).subscribe({
         next: (result: Array<any>) => {
           // this.lectures = result.map((lecture) => lecture.id == +lectureId);
-          this.activeLecture = result.filter(
-            (lecture) => lecture.id == +lectureId
+          this.lectureService.lectureDataSnippet.next(
+            result.filter((lecture) => lecture.id == +lectureId)
           );
         },
         error: (err) => {
           console.log(err);
         },
       });
+      this.lectureService.lectureDataSnippet.subscribe((value) => {
+        console.log(value);
+        this.activeLecture = value[0];
+      });
+    });
+
+    this.authService.getLoggedInUserData(this.#token).subscribe({
+      next: (value) => {
+        this.#studentId = value['user']['details'].id;
+      },
+      error: (err) => console.error(err),
     });
   }
 
   goBack(): void {
     this.location.back();
   }
+
   goToLecture(lectureId: string) {
     this.activatedRoute.queryParamMap.subscribe((params) => {
       let courseId = params.get('courseId');
+      this.lectureService.getLectureData(courseId as string).subscribe({
+        next: (result: Array<any>) => {
+          // this.lectures = result.map((lecture) => lecture.id == +lectureId);
+          this.lectureService.lectureDataSnippet.next(
+            result.filter((lecture) => lecture.id == +lectureId)
+          );
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      });
       this.router.navigate(['/student/lecture'], {
         queryParams: { courseId, lectureId: lectureId },
       });
     });
+  }
+
+  submitReview() {
+    this.activatedRoute.queryParamMap.subscribe((params) => {
+      let courseId = params.get('courseId');
+
+      this.courseService
+        .submitFeedback(
+          this.rating,
+          this.comment,
+          courseId as string,
+          this.#studentId
+        )
+        .subscribe({
+          next: (value) => {
+            this.messageService.add({
+              severity: 'success',
+              summary: 'Success',
+              detail: 'Feedback submitted successfully',
+            });
+            this.comment = '';
+            this.rating = 0;
+          },
+          error: (err) => {
+            this.messageService.add({
+              severity: 'error',
+              summary: 'Error',
+              detail: 'Something went wrong',
+            });
+          },
+        });
+    });
+    this.visible = false;
   }
 }

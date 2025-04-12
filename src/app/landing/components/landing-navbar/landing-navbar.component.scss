@@ -34,3 +34,10 @@ nav {
     background-color: #dbeee5;
   }
 }
+::ng-deep p-menu {
+  div.ng-trigger.ng-trigger-overlayAnimation.ng-animating.p-menu.p-component.p-menu-overlay {
+    ul {
+      padding-left: 20px;
+    }
+  }
+}

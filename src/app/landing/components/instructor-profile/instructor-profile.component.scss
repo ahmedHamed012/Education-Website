@@ -1,0 +1,67 @@
+.instructor-profile {
+  max-width: 400px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  //   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  .profile-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    .profile-img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #006557;
+    }
+
+    .profile-info {
+      .name {
+        font-size: 1.4rem;
+        font-weight: bold;
+        margin: 0;
+      }
+
+      .rate {
+        font-size: 1rem;
+        color: #ffcc00;
+        font-weight: 500;
+      }
+    }
+  }
+
+  .profile-details {
+    margin-top: 15px;
+
+    .about {
+      font-size: 1rem;
+      color: #333;
+    }
+
+    .courses-title {
+      margin-top: 10px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #006557;
+    }
+
+    .courses-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      .course {
+        font-size: 1rem;
+        padding: 5px 0;
+      }
+    }
+  }
+}

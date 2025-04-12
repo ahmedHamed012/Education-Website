@@ -8,6 +8,7 @@ export interface IUser {
   first_name: string;
   last_name: string;
   username: string;
+  name?: string;
   date_of_birth: string;
   gender: 'male' | 'female' | 'other';
   country: string;

@@ -1,10 +1,25 @@
-<div class="container">
-  <section class="hero-sec sec-1 d-flex w-100 gap-5 my-3" style="height: 100vh">
-    <div
-      class="hero-sec-info d-flex col flex-column py-5 justify-content-center"
-    >
-      <p class="hero-sec-info-title">Education without limits</p>
-      <p class="hero-sec-info-desc">
+<section class="hero-sec position-relative w-100">
+  <!-- Background Video -->
+  <video
+    #heroVideo
+    autoplay
+    loop
+    muted
+    playsinline
+    preload="auto"
+    class="hero-video"
+  >
+    <source src="assets/Videos/landing_video.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- Overlay -->
+  <div class="hero-overlay">
+    <div class="hero-content text-white px-3">
+      <h1 class="animate__animated animate__fadeInDown animate__delay-1s">
+        Education with no limits
+      </h1>
+      <p class="mt-3 animate__animated animate__fadeInDown animate_delay-2s">
         Our Learn On empowers individuals to achieve your goals through
         expert-led courses and hands-on experience. With a user-friendly
         platform, flexible learning options, and 24/7 support, we provide a
@@ -12,34 +27,16 @@
         career or exploring a new passion, our Learn On is designed to help you
         succeed at your own pace.
       </p>
-      <p style="font-family: 'Poppins'; font-size: 0.98rem">
+      <p
+        class="animate__animated animate__fadeInDown animate_delay-2s"
+        style="font-family: 'Poppins'; font-size: 0.98rem"
+      >
         Expand your horizons with endless learning opportunities.
       </p>
-      <!-- <div class="d-flex gap-3 align-items-center">
-        <input
-          type="text"
-          pInputText
-          [(ngModel)]="value"
-          placeholder="Enter your email"
-        />
-        <button
-          class="nav-btn"
-          style="background-color: #006557; color: white"
-          routerLink="/auth/register"
-        >
-          Sign Up
-        </button>
-      </div>
-      <p
-        style="font-size: 0.78rem; font-family: 'Poppins'; font-weight: bold"
-        class="py-2"
-      >
-        By clicking Sign Up you're confirming that you agree with our
-        <a href="#">Terms and Conditions.</a>
-      </p> -->
     </div>
-    <div class="hero-sec-img d-flex col d-none d-lg-block"></div>
-  </section>
+  </div>
+</section>
+<div class="container">
   <!------------------------------------------------------------------------------>
   <section class="sec-2 popular-courses-sec my-5 d-flex flex-column gap-3">
     <p class="sec-title text-center">Popular Courses</p>
@@ -59,12 +56,23 @@
             <i class="pi pi-angle-right px-2"></i>
           </div>
         </div>
+        <!-- <div
+          class="course-img h-50"
+          [ngStyle]="{
+            'background-image': course.image
+              ? 'url(' + course.image + ')'
+              : 'url(../../../assets/Images/no_img.png)',
+            'background-size': 'cover'
+          }"
+        ></div> -->
         <div
           class="course-img h-50"
-          style="
-            background-image: url('../../../assets/Images/embeded.jpeg');
-            background-size: cover;
-          "
+          [ngStyle]="{
+            'background-image': 'url(../../../assets/Images/no_img.png)',
+            'background-size': 'contain',
+            'background-repeat': 'no-repeat',
+            'background-position': 'center'
+          }"
         ></div>
       </div>
       }

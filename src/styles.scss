@@ -1,6 +1,7 @@
 @import "primeng/resources/themes/lara-light-blue/theme.css";
 @import "primeng/resources/primeng.css";
 @import "primeicons/primeicons.css";
+@import "animate.css/animate.min.css";
 /* You can add global styles to this file, and also import other style files */
 @font-face {
   font-family: "Poppins";
@@ -98,7 +99,7 @@ textarea {
   width: 100%;
 }
 ol,
-ul {
+ul:not(.p-menu-list) {
   /* padding-left: 2rem; */
   padding-left: 0;
 }

@@ -11,6 +11,7 @@ import { MenuItem } from 'primeng/api';
 import { Router } from '@angular/router';
 // import { jwtDecode } from 'jwt-decode';
 import { AuthenticationService } from '../../../Core/Services/authentication.service';
+import { UtilsService } from '../../../Core/Services/utils.service';
 
 @Component({
   selector: 'app-landing-navbar',
@@ -32,9 +33,11 @@ import { AuthenticationService } from '../../../Core/Services/authentication.ser
 export class LandingNavbarComponent {
   constructor(
     private readonly router: Router,
-    private readonly authService: AuthenticationService
+    private readonly authService: AuthenticationService,
+    private readonly utilsService: UtilsService
   ) {}
   items: MenuItem[] | undefined;
+  avatar!: string;
   token = localStorage.getItem('learn_on_token');
   username!: string;
   firstName!: string;
@@ -85,16 +88,32 @@ export class LandingNavbarComponent {
         separator: true,
       },
     ];
-    this.authService
-      .getLoggedInUserData(this.token?.split('|')[1] as string)
-      .subscribe({
-        next: (result) => {
-          this.firstName = result['user']['details'].first_name;
-          this.lastName = result['user']['details'].last_name;
-          this.username = result['user']['details'].username;
-          this.role = result['user'].role;
-          this.username = this.firstName + ' ' + this.lastName;
-        },
+    if (this.token) {
+      this.authService
+        .getLoggedInUserData(this.token?.split('|')[1] as string)
+        .subscribe({
+          next: (result) => {
+            this.firstName = result['user']['details'].first_name;
+            this.lastName = result['user']['details'].last_name;
+            this.username = result['user']['details'].username;
+            this.avatar = this.utilsService.fixAssetUrl(
+              result['user']['details'].image
+            );
+            this.role = result['user'].role;
+            this.username = this.firstName + ' ' + this.lastName;
+          },
+        });
+      this.authService.userDataSnippet.subscribe((response) => {
+        console.log(response);
+        this.firstName = response.firstName ?? this.firstName;
+        this.lastName = response.lastName ?? this.lastName;
+        this.username =
+          response.firstName && response.lastName
+            ? `${response.firstName} ${response.lastName}`
+            : `${this.firstName} ${this.lastName}`;
+        this.role = response.role;
+        this.avatar = response.image ?? this.avatar;
       });
+    }
   }
 }
