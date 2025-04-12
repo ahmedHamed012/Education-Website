@@ -9,15 +9,6 @@ import { CategoryService } from './../../services/category.service';
   imports: [AdminTableComponent, CommonModule],
   templateUrl: './all-categories.component.html',
   styleUrl: './all-categories.component.scss',
-  template: `
-    <app-admin-table
-      [caption]="'All Categories'"
-      [buttonLabel]="'Add New Category'"
-      [dataHeaders]="dataHeaders"
-      [dataList]="categories"
-      [actionVisibility]="true"
-    ></app-admin-table>
-  `,
 })
 
 export class AllCategoriesComponent {

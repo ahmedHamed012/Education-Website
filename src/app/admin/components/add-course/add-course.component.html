@@ -5,24 +5,28 @@
         <!-- Navigation Tabs -->
         <ul class="nav nav-tabs justify-content-center" id="courseTabs">
             <li class="nav-item me-5 ms-5">
-                <a class="nav-link" [class.active]="activeTab() === 1" (click)="setActiveTab(1)">
-                    <i class="pi pi-chart-bar px-2"></i>Course Informations</a>
+                <a class="nav-link" [class.active]="activeTab === 1" (click)="setActiveTab(1)">
+                    <i class="pi pi-chart-bar px-2"></i>Course Informations
+                </a>
             </li>
             <li class="nav-item me-5 ms-5">
-                <a class="nav-link" [class.active]="activeTab() === 2" (click)="setActiveTab(2)">
-                    <i class="pi pi-video px-2"></i> Course Details</a>
+                <a class="nav-link" [class.active]="activeTab === 2" [class.disabled]="!courseForm.valid"
+                    (click)="setActiveTab(2)">
+                    <i class="pi pi-video px-2"></i> Course Details
+                </a>
             </li>
             <li class="nav-item me-5 ms-5">
-                <a class="nav-link" [class.active]="activeTab() === 3" (click)="setActiveTab(3)">
-                    <i class="pi pi-desktop px-2"></i>Course Content</a>
+                <a class="nav-link" [class.active]="activeTab === 3" [class.disabled]="!courseForm.valid"
+                    (click)="setActiveTab(3)">
+                    <i class="pi pi-desktop px-2"></i>Course Content
+                </a>
             </li>
         </ul>
 
-        <!-- Tab Content -->
         <div class="tab-content mt-4">
 
             <!-- Step 1: Course Informations -->
-            <div *ngIf="activeTab() === 1" class="stepone">
+            <div *ngIf="activeTab === 1" class="stepone">
                 <form [formGroup]="courseForm">
 
                     <!-- Course Title -->
@@ -35,13 +39,28 @@
                         </small>
                     </div>
 
-                    <!-- Course Category (Dropdown from Enum) -->
-                    <!-- <div class="mb-4">
-                        <label for="category" class="form-label">Course Category</label>
-                        <select id="category" formControlName="category">
-                            <option *ngFor="let cat of courseCategories" [value]="cat">{{ cat }}</option>
-                        </select>
-                    </div> -->
+                    <div class="d-flex">
+                        <!-- Price -->
+                        <div class="mb-4 me-5">
+                            <label for="price" class="form-label">Price</label>
+                            <input id="price" formControlName="price" type="number" placeholder="Enter Course Price">
+                            <small class="text-danger"
+                                *ngIf="courseForm.get('price')?.invalid && courseForm.get('price')?.touched">
+                                Price is required.
+                            </small>
+                        </div>
+
+                        <!-- Number of Lectures -->
+                        <div class="mb-4">
+                            <label for="duration" class="form-label">Number of Lectures</label>
+                            <input id="duration" formControlName="duration" type="number"
+                                placeholder="Enter Number of Lectures">
+                            <small class="text-danger"
+                                *ngIf="courseForm.get('duration')?.invalid && courseForm.get('duration')?.touched">
+                                Duration is required.
+                            </small>
+                        </div>
+                    </div>
 
                     <div class="d-flex">
                         <!-- Semester (Dropdown) -->
@@ -50,42 +69,89 @@
                             <select id="semester" formControlName="semester">
                                 <option *ngFor="let sem of semesters" [value]="sem">{{ sem }}</option>
                             </select>
+                            <small class="text-danger"
+                                *ngIf="courseForm.get('semester')?.invalid && courseForm.get('semester')?.touched">
+                                Semester is required.
+                            </small>
                         </div>
 
                         <!-- Course Level (Dropdown) -->
                         <div class="mb-4">
                             <label for="level" class="form-label">Course Level</label>
-                            <select id="level" formControlName="level">
+                            <select id="level" formControlName="courseLevel">
                                 <option *ngFor="let level of courseLevels" [value]="level">{{ level }}</option>
                             </select>
+                            <small class="text-danger"
+                                *ngIf="courseForm.get('courseLevel')?.invalid && courseForm.get('courseLevel')?.touched">
+                                Course Level is required.
+                            </small>
                         </div>
                     </div>
 
                     <div class="d-flex">
                         <!-- Start Date -->
                         <div class="mb-4 me-5">
-                            <label for="startDate" class="form-label">Start Date</label>
-                            <input type="date" id="startDate" formControlName="startDate">
+                            <label for="start_date" class="form-label">Start Date</label>
+                            <input type="date" id="start_date" formControlName="start_date">
+                            <small class="text-danger"
+                                *ngIf="courseForm.get('start_date')?.invalid && courseForm.get('start_date')?.touched">
+                                Start Date is required.
+                            </small>
                         </div>
 
                         <!-- End Date -->
                         <div class="mb-4">
-                            <label for="endDate" class="form-label">End Date</label>
-                            <input type="date" id="endDate" class="form-control" formControlName="endDate">
+                            <label for="end_date" class="form-label">End Date</label>
+                            <input type="date" id="end_date" formControlName="end_date">
+                            <small class="text-danger"
+                                *ngIf="courseForm.get('end_date')?.invalid && courseForm.get('end_date')?.touched">
+                                End Date is required.
+                            </small>
                         </div>
                     </div>
 
+                    <!-- Category Selection -->
+                    <div class="d-flex">
+                        <div class="mb-4 me-5">
+                            <label for="category" class="form-label">Select Category</label>
+                            <select id="category" formControlName="category_id">
+                                <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}
+                                </option>
+                            </select>
+                            <small class="text-danger"
+                                *ngIf="courseForm.get('category_id')?.invalid && courseForm.get('category_id')?.touched">
+                                Category is required.
+                            </small>
+                        </div>
+
+                        <!-- Major -->
+                        <div class="mb-4">
+                            <label for="major" class="form-label">Major</label>
+                            <input id="major" formControlName="major" placeholder="Enter Major">
+                            <small class="text-danger"
+                                *ngIf="courseForm.get('major')?.invalid && courseForm.get('major')?.touched">
+                                Major is required.
+                            </small>
+                        </div>
+                    </div>
+
+
                     <!-- Instructor Selection (Search Input) -->
-                    <div class="mb-4">
+                    <div class="mb-4 search-container">
                         <label for="instructor" class="form-label">Select Instructor</label>
-                        <input type="text" id="instructor" class="form-control" placeholder="Search Instructor..."
-                            (input)="searchInstructors($event)">
-                        <ul class="list-group mt-2" *ngIf="filteredInstructors.length">
-                            <li class="list-group-item" *ngFor="let instructor of filteredInstructors"
-                                (click)="selectInstructor(instructor)">
+                        <input type="text" id="instructor" placeholder="Search Instructor..."
+                            formControlName="instructor_id" [formControl]="searchControl"
+                            (keydown)="navigateResults($event)">
+                        <ul class="search-results mt-2" *ngIf="filteredInstructors.length > 0">
+                            <li *ngFor="let instructor of filteredInstructors; let i = index"
+                                [class.selected]="i === selectedIndex" (click)="selectInstructor(instructor)">
                                 {{ instructor.name }}
                             </li>
                         </ul>
+                        <small class="text-danger"
+                            *ngIf="courseForm.get('instructor_id')?.invalid && courseForm.get('instructor_id')?.touched">
+                            Instructor is required.
+                        </small>
                     </div>
 
                     <!-- Next Button -->
@@ -98,11 +164,11 @@
 
 
             <!-- Step 2: Course Details -->
-            <div *ngIf="activeTab() === 2">
+            <div *ngIf="activeTab === 2">
                 <form [formGroup]="courseForm">
                     <div class="row">
                         <div class="row mb-4">
-                            <!-- Course Thumbnail -->
+                            <!-- Course image -->
                             <div class="col-md-6">
                                 <div class="card p-4 text-center">
                                     <h5>Course Thumbnail</h5>
@@ -112,18 +178,40 @@
                                         <b>jpg, jpeg, or png</b>
                                     </p>
                                     <div class="thumbnail-box mb-3">
-                                        <img *ngIf="thumbnailPreview" [src]="thumbnailPreview" class="preview-img" />
-                                        <i *ngIf="!thumbnailPreview" class="pi pi-image"></i>
+                                        <img *ngIf="selectedImage" [src]="selectedImage" class="preview-img" />
+                                        <i *ngIf="!selectedImage" class="pi pi-image"></i>
                                     </div>
-                                    <input type="file" id="thumbnailInput" (change)="onThumbnailUpload($event)" hidden>
+                                    <input type="file" id="thumbnailInput" (change)="onImageSelected($event)" hidden>
                                     <label for="thumbnailInput" class="btn uplaodData"> Upload Image <i
                                             class="pi pi-upload ms-2"></i>
                                     </label>
                                 </div>
                             </div>
 
-                            <!-- Course Trailer -->
+                            <!-- Course introduction video -->
                             <div class="col-md-6">
+                                <div class="card p-4 text-center">
+                                    <h5>Course Trailer</h5>
+                                    <p class="text-muted">
+                                        Students who watch a well-made promo video are <b>5X</b> more likely to enroll
+                                        in your course. We've seen that statistic go up to <b>10X</b> for exceptionally
+                                        awesome
+                                        videos.
+                                    </p>
+                                    <div class="video-box mb-3">
+                                        <video *ngIf="videoPreview" [src]="videoPreview" controls
+                                            class="preview-video"></video>
+                                        <i *ngIf="!videoPreview" class="pi pi-play"></i>
+                                    </div>
+                                    <div class="mb-3">
+                                        <input type="text" class="form-control introVideo" id="videoInput"
+                                            placeholder="Enter Google Drive video link"
+                                            formControlName="introduction_video_path" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- <div class="col-md-6">
                                 <div class="card p-4 text-center">
                                     <h5>Course Trailer</h5>
                                     <p class="text-muted">
@@ -141,7 +229,7 @@
                                         Upload Video <i class="pi pi-upload ms-2"></i>
                                     </label>
                                 </div>
-                            </div>
+                            </div>-->
                         </div>
 
                         <!-- Course Description -->
@@ -154,6 +242,18 @@
                                 Description is required.
                             </small>
                         </div>
+
+                        <!-- Course Prerequisities -->
+                        <div class="mb-4">
+                            <label for="prerequisite" class="form-label">Course Prerequisites</label>
+                            <textarea id="prerequisite" class="form-control" formControlName="prerequisite" rows="3"
+                                placeholder="Enter Prerequisites"></textarea>
+                            <small class="text-danger"
+                                *ngIf="courseForm.get('prerequisite')?.invalid && courseForm.get('prerequisite')?.touched">
+                                Prerequisite is required.
+                            </small>
+                        </div>
+
                         <div class="d-flex justify-content-between">
                             <button class="btn preBtn" type="button" (click)="setActiveTab(1)">Previous</button>
                             <button class="btn nextBtn" type="button" (click)="nextStep(3)">Next</button>
@@ -163,18 +263,19 @@
             </div>
 
             <!-- Step 3: Course Content -->
-            <div *ngIf="activeTab() === 3">
+            <div *ngIf="activeTab === 3">
                 <form [formGroup]="courseForm">
                     <div class="lecture-container">
-                        <div *ngFor="let lecture of lectures; let i = index" class="lecture-item">
+                        <div *ngFor="let lecture of lectures.controls; let i = index" class="lecture-item"
+                            [formGroupName]="i">
                             <div class="lecture-details">
                                 <div class="lecture-input-wrapper">
                                     <span class="drag-icon">≡</span>
                                     <input type="text" class="lecture-input" placeholder="Lecture Name"
-                                        [value]="lecture.name" (input)="updateLecture(i, 'name', $event)" />
+                                        formControlName="title" />
                                 </div>
                                 <input type="text" class="lecture-input link-input" placeholder="Enter Drive Link"
-                                    [value]="lecture.link" (input)="updateLecture(i, 'link', $event)" />
+                                    formControlName="link" />
                             </div>
 
                             <button class="action-btn remove-btn" *ngIf="lectures.length > 1"
@@ -189,16 +290,16 @@
                                 </svg>
                             </button>
                         </div>
-                        <button class="add-section-btn" (click)="addSection()">Add Sections</button>
+                        <button class="add-section-btn" type="button" (click)="addSection()">Add Sections</button>
                     </div>
-
 
                     <div class="d-flex justify-content-between">
                         <button class="btn preBtn" type="button" (click)="setActiveTab(2)">Previous</button>
-                        <button class="btn nextBtn" type="button" (click)="submit()">Submit</button>
+                        <button class="btn nextBtn" type="button" (click)="submitLectures()">Submit Lectures</button>
                     </div>
                 </form>
             </div>
+
 
         </div>
     </div>

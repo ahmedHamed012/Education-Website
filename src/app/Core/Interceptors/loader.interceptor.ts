@@ -13,6 +13,10 @@ export const loaderInterceptor: HttpInterceptorFn = (req, next) => {
   loadingService.setLoading(true, req.url);
 
   return next(req).pipe(
-    finalize(() => loadingService.setLoading(false, req.url))
+    finalize(() => loadingService.setLoading(false, req.url)),
+    catchError((error) => {
+      console.error('HTTP Error:', error);
+      return throwError(() => error);
+    })
   );
 };

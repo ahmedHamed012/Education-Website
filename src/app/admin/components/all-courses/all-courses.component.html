@@ -1,6 +1,8 @@
 <app-admin-table
     [caption]="'All Courses'"
-    [dataHeaders]="['Id', 'Course', 'Instructor']"
+    [itemsHeaders]="tableHeaders"  
+    [itemsList]="tableData"        
     [actionVisibility]="true"
     [buttonLabel]="'Add Course'"
+    (buttonClick)="navigateToAddCourse()"
 ></app-admin-table>

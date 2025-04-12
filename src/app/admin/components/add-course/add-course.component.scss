@@ -1,11 +1,11 @@
 // Navigation Tab
 .nav-tabs .nav-link {
-    color: black ; 
+    color: black;
 }
 
 .nav-tabs .nav-link.active {
     color: #006557;
-    font-weight: bold; 
+    font-weight: bold;
 }
 
 // Step One
@@ -28,10 +28,45 @@ label {
 
 #semester,
 #level,
-#startDate,
-#endDate,
-#instructor {
+#start_date,
+#end_date,
+#instructor,
+#duration,
+#price,
+#category,
+#major {
     width: 600px;
+}
+
+.search-container {
+    position: relative;
+    width: 100%;
+}
+
+.search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 600px;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    max-height: 200px;
+    overflow-y: auto;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    z-index: 1000;
+}
+
+.search-results li {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.search-results li:hover,
+.search-results li.selected {
+    background: #dbeee5;
 }
 
 .preBtn {
@@ -81,6 +116,11 @@ label {
 .thumbnail-box i,
 .video-box i {
     font-size: 50px;
+}
+
+.introVideo{
+    width: 100%;
+    border: 1px solid #006557;
 }
 
 .uplaodData {
@@ -154,6 +194,11 @@ label {
     font-size: 14px;
     margin-bottom: 5px;
     width: 100%;
+}
+
+.nav-link.disabled {
+    pointer-events: none;
+    opacity: 0.5;
 }
 
 .link-input {

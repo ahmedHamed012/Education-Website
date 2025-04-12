@@ -1,20 +1,41 @@
 import { Injectable, inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
 })
 export class CourseService {
-    private apiUrl = 'http://127.0.0.1:8000/api/admin/courses'; 
+    private baseUrl = 'https://bk.learn-on.com/public/api/admin';
 
-    private http = inject(HttpClient);
+    constructor(private http: HttpClient) { }
 
-    addCourse(courseData: any): Observable<any> {
-        return this.http.post(this.apiUrl, courseData);
+    private getHeaders(): HttpHeaders {
+        const token = localStorage.getItem('learn_on_token');
+        return new HttpHeaders({
+            'Authorization': `Bearer ${token}`,
+        });
     }
 
-    getInstructors(): Observable<any[]> {
-        return this.http.get<any[]>(`${this.apiUrl}/instructors`);
+    getCourses(): Observable<any> {
+        return this.http.get(`${this.baseUrl}/courses`, { headers: this.getHeaders() });
     }
+
+    getCategories(): Observable<any> {
+        return this.http.get(`${this.baseUrl}/categories`, { headers: this.getHeaders() });
+    }
+
+    searchInstructors(query: string): Observable<any> {
+        return this.http.get<any>(`${this.baseUrl}/instructors?search=${query}`, { headers: this.getHeaders() });
+    }
+
+    createCourse(courseData: any): Observable<any> {
+        return this.http.post(`${this.baseUrl}/courses`, courseData, { headers: this.getHeaders() });
+    }
+    
+    submitLectures(courseId: number, lecturesData: any): Observable<any> {
+        const url = `${this.baseUrl}/courses/${courseId}/lectures`;
+        return this.http.post(url, lecturesData, { headers: this.getHeaders() });
+    }
+    
 }
