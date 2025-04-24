@@ -186,12 +186,37 @@
 
             <div class="country-controller d-flex flex-column w-100 px-4 gap-2">
               <span class="form-control-label">Country</span>
-              <input
+              <!-- <input
                 type="text"
                 pInputText
                 formControlName="country"
                 placeholder="Enter your country ..."
-              />
+              /> -->
+              <p-dropdown
+                [options]="countries"
+                formControlName="country"
+                placeholder="Select a country"
+                class="w-full md:w-56"
+                [filter]="true"
+                filterBy="name"
+              >
+                <ng-template pTemplate="selectedItem" let-selectedOption>
+                  <div class="flex items-center gap-2">
+                    <div>{{ selectedOption }}</div>
+                  </div>
+                </ng-template>
+                <ng-template let-country pTemplate="item">
+                  <div class="flex items-center gap-2">
+                    <div>{{ country }}</div>
+                  </div>
+                </ng-template>
+                <ng-template pTemplate="dropdownicon">
+                  <i class="pi pi-map"></i>
+                </ng-template>
+                <ng-template #header>
+                  <div class="font-medium p-3">Available Countries</div>
+                </ng-template>
+              </p-dropdown>
             </div>
 
             <div class="phone-controller d-flex flex-column w-100 px-4 gap-2">
@@ -222,12 +247,37 @@
               *ngIf="signUpForm.get('role')?.value == 'instructor'"
             >
               <span class="form-control-label">Major</span>
-              <input
+              <!-- <input
                 type="text"
                 pInputText
                 formControlName="major"
                 placeholder="Enter your major ..."
-              />
+              /> -->
+              <p-dropdown
+                [options]="majors"
+                formControlName="major"
+                placeholder="Select a major"
+                class="w-full md:w-56"
+                [filter]="true"
+                filterBy="name"
+              >
+                <ng-template pTemplate="selectedItem" let-selectedOption>
+                  <div class="flex items-center gap-2">
+                    <div>{{ selectedOption }}</div>
+                  </div>
+                </ng-template>
+                <ng-template let-major pTemplate="item">
+                  <div class="flex items-center gap-2">
+                    <div>{{ major }}</div>
+                  </div>
+                </ng-template>
+                <ng-template pTemplate="dropdownicon">
+                  <i class="pi pi-graduation-cap"></i>
+                </ng-template>
+                <ng-template #header>
+                  <div class="font-medium p-3">Available Majors</div>
+                </ng-template>
+              </p-dropdown>
             </div>
 
             <div class="image-controller d-flex flex-column w-100 px-4 gap-2">

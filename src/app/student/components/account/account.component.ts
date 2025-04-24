@@ -18,6 +18,7 @@ import { UserService } from '../../../Core/Services/user.service';
 import { Router } from '@angular/router';
 import { ToastModule } from 'primeng/toast';
 import { UtilsService } from '../../../Core/Services/utils.service';
+import { DropdownModule } from 'primeng/dropdown';
 
 @Component({
   selector: 'app-account',
@@ -31,6 +32,7 @@ import { UtilsService } from '../../../Core/Services/utils.service';
     PasswordModule,
     StepsModule,
     ToastModule,
+    DropdownModule,
   ],
   templateUrl: './account.component.html',
   styleUrl: './account.component.scss',
@@ -44,6 +46,8 @@ export class AccountComponent {
   email!: string;
   items: MenuItem[] | undefined;
   userId!: string;
+  countries: any[] | undefined;
+  majors: any[] | undefined;
   public generalInfoTab: boolean = true;
   public securityInfoTab: boolean = false;
   constructor(
@@ -103,6 +107,27 @@ export class AccountComponent {
     this.activeIndex = event;
   }
   ngOnInit() {
+    this.countries = [
+      'Egypt',
+      'Saudi Arabia',
+      'United Arab Emirates',
+      'Kuwait',
+      'Qatar',
+      'Oman',
+      'Bahrain',
+      'Iraq',
+      'Jordan',
+      'Lebanon',
+      'Syria',
+      'Yemen',
+      'Sudan',
+      'Libya',
+      'Morocco',
+      'Tunisia',
+      'Algeria',
+      'Mauritania',
+    ];
+    this.majors = ['university', 'school', 'graduated'];
     this.items = [
       {
         label: 'Basic Information',

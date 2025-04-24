@@ -52,7 +52,7 @@
 
       <div class="row my-4">
         <div class="col-12 col-md-8">
-          <video
+          <!-- <video
             controls
             poster="assets/Images/video-cover.jpeg"
             class="w-100 rounded shadow-sm"
@@ -60,7 +60,16 @@
             <source src="example-video.mp4" type="video/mp4" />
             <source src="example-video.webm" type="video/webm" />
             Your browser does not support the video tag.
-          </video>
+          </video> -->
+          <iframe
+            src="https://drive.google.com/file/d/1uxv5IaN_e7GGVXAteJrdNHUfsjMntOn-/preview"
+            class="w-100"
+            height="480"
+            allow="autoplay"
+            frameborder="0"
+            sandbox="allow-scripts allow-same-origin"
+            allowfullscreen
+          ></iframe>
         </div>
         <div class="col-12 col-md-4 p-3">
           <div class="price-container text-center p-3 border rounded shadow-sm">
@@ -415,11 +424,9 @@
             }}</span></span
           >
           <div class="course-rating-in-stars">
-            <i
-              *ngFor="let star of getStarsArray(comment.rate)"
-              class="pi pi-star-fill px-1"
-              style="color: #004c41"
-            ></i>
+            @for (item of getStarsArray(+comment.rate); track $index) {
+            <i class="pi pi-star-fill px-1" style="color: #004c41"></i>
+            }
             <i
               *ngFor="let star of getEmptyStarsArray(comment.rate)"
               class="pi pi-star px-1"

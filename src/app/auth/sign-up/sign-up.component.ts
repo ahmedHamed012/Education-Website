@@ -17,6 +17,7 @@ import { AuthenticationService } from '../../Core/Services/authentication.servic
 import { StepsModule } from 'primeng/steps';
 import { ChipModule } from 'primeng/chip';
 import { IUser } from '../../Core/Interfaces/create-user.interface';
+import { DropdownModule } from 'primeng/dropdown';
 @Component({
   selector: 'app-sign-up',
   standalone: true,
@@ -31,6 +32,7 @@ import { IUser } from '../../Core/Interfaces/create-user.interface';
     ToastModule,
     StepsModule,
     ChipModule,
+    DropdownModule,
   ],
   templateUrl: './sign-up.component.html',
   styleUrl: './sign-up.component.scss',
@@ -45,6 +47,10 @@ export class SignUpComponent {
   items: MenuItem[] | undefined;
   public generalInfoTab: boolean = true;
   public personalInfoTab: boolean = false;
+  countries: any[] | undefined;
+  majors: any[] | undefined;
+  selectedCountry: string | undefined;
+
   public signUpForm: FormGroup = this.fb.group({
     firstName: [null, [Validators.required]],
     lastName: [null, [Validators.required]],
@@ -70,6 +76,27 @@ export class SignUpComponent {
     this.activeIndex = event;
   }
   ngOnInit() {
+    this.countries = [
+      'Egypt',
+      'Saudi Arabia',
+      'United Arab Emirates',
+      'Kuwait',
+      'Qatar',
+      'Oman',
+      'Bahrain',
+      'Iraq',
+      'Jordan',
+      'Lebanon',
+      'Syria',
+      'Yemen',
+      'Sudan',
+      'Libya',
+      'Morocco',
+      'Tunisia',
+      'Algeria',
+      'Mauritania',
+    ];
+    this.majors = ['university', 'school', 'graduated'];
     this.items = [
       {
         label: 'Basic Information',

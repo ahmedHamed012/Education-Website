@@ -17,12 +17,12 @@ export class LectureService {
     private readonly router: Router
   ) {}
 
-  getLectureData(courseId: string): Observable<any> {
+  getLectureData(courseId: string, lectureId: string): Observable<any> {
     const token = localStorage.getItem('learn_on_token')?.split('|')[1] ?? ''; // Ensure it's always a string
     const deviceToken = localStorage.getItem('learn_on_device_token') ?? ''; // Ensure it's always a string
 
     return this.http.get<any>(
-      `${environment.apiUrl}/student/courses/${courseId}/lectures`,
+      `${environment.apiUrl}/student/mycourses/${courseId}/lectures/${lectureId}`,
       {
         headers: {
           authorization: `Bearer ${token}`,

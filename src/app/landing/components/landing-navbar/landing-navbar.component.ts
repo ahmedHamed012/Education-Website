@@ -104,7 +104,6 @@ export class LandingNavbarComponent {
           },
         });
       this.authService.userDataSnippet.subscribe((response) => {
-        console.log(response);
         this.firstName = response.firstName ?? this.firstName;
         this.lastName = response.lastName ?? this.lastName;
         this.username =

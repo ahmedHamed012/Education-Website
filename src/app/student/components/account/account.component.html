@@ -59,7 +59,32 @@
       </div>
       <div class="form-group" *ngIf="role == 'instructor'">
         <label>Major:</label>
-        <input type="text" formControlName="major" />
+        <!-- <input type="text" formControlName="major" /> -->
+        <p-dropdown
+          [options]="majors"
+          formControlName="major"
+          placeholder="Select a major"
+          class="w-full md:w-56"
+          [filter]="true"
+          filterBy="name"
+        >
+          <ng-template pTemplate="selectedItem" let-selectedOption>
+            <div class="flex items-center gap-2">
+              <div>{{ selectedOption }}</div>
+            </div>
+          </ng-template>
+          <ng-template let-major pTemplate="item">
+            <div class="flex items-center gap-2">
+              <div>{{ major }}</div>
+            </div>
+          </ng-template>
+          <ng-template pTemplate="dropdownicon">
+            <i class="pi pi-graduation-cap"></i>
+          </ng-template>
+          <ng-template #header>
+            <div class="font-medium p-3">Available Majors</div>
+          </ng-template>
+        </p-dropdown>
       </div>
       <div class="form-group" *ngIf="role == 'student'">
         <label>Interests:</label>
@@ -71,7 +96,32 @@
       </div>
       <div class="form-group">
         <label>Country:</label>
-        <input type="text" formControlName="country" />
+        <!-- <input type="text" formControlName="country" /> -->
+        <p-dropdown
+          [options]="countries"
+          formControlName="country"
+          placeholder="Select a country"
+          class="w-full md:w-56"
+          [filter]="true"
+          filterBy="name"
+        >
+          <ng-template pTemplate="selectedItem" let-selectedOption>
+            <div class="flex items-center gap-2">
+              <div>{{ selectedOption }}</div>
+            </div>
+          </ng-template>
+          <ng-template let-country pTemplate="item">
+            <div class="flex items-center gap-2">
+              <div>{{ country }}</div>
+            </div>
+          </ng-template>
+          <ng-template pTemplate="dropdownicon">
+            <i class="pi pi-map"></i>
+          </ng-template>
+          <ng-template #header>
+            <div class="font-medium p-3">Available Countries</div>
+          </ng-template>
+        </p-dropdown>
       </div>
       <div class="form-group">
         <label>Phone:</label>

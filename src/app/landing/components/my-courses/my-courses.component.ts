@@ -62,8 +62,12 @@ export class MyCoursesComponent {
 
   buyCourse(course: any) {
     this.coursesService.getCourseById(course.id).subscribe((result) => {
+      console.log(result);
       this.router.navigate([`/student/lecture`], {
-        queryParams: { courseId: course.id, lectureId: result.lectures[0].id },
+        queryParams: {
+          courseId: course.id,
+          lectureId: result.data.lectures[0].id,
+        },
       });
     });
   }

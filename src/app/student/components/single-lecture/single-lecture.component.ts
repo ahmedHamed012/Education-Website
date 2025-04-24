@@ -12,6 +12,8 @@ import { DialogModule } from 'primeng/dialog';
 import { FormsModule } from '@angular/forms';
 import { RatingModule } from 'primeng/rating';
 import { AuthenticationService } from '../../../Core/Services/authentication.service';
+import { UtilsService } from '../../../Core/Services/utils.service';
+import { DomSanitizer } from '@angular/platform-browser';
 @Component({
   selector: 'app-single-lecture',
   standalone: true,
@@ -32,11 +34,13 @@ import { AuthenticationService } from '../../../Core/Services/authentication.ser
 export class SingleLectureComponent {
   constructor(
     private readonly router: Router,
+    private sanitizer: DomSanitizer,
     private activatedRoute: ActivatedRoute,
     private readonly courseService: CoursesService,
     private readonly authService: AuthenticationService,
     private readonly messageService: MessageService,
     private readonly lectureService: LectureService,
+    private readonly utilsService: UtilsService,
     private readonly location: Location
   ) {}
   courseInfo!: any;
@@ -50,6 +54,7 @@ export class SingleLectureComponent {
   comment: string = '';
   #studentId: string = '';
   #token: string = localStorage.getItem('learn_on_token')?.split('|')[1] ?? '';
+  lectureVideo!: any;
   openDialog() {
     this.visible = true;
   }
@@ -62,20 +67,18 @@ export class SingleLectureComponent {
         lectureId = params.get('lectureId');
         this.courseService.getCourseById(courseId as string).subscribe({
           next: (result) => {
-            console.log(result);
-            this.courseInfo = result.data ?? result;
+            this.courseInfo = result.data;
             this.ratings = this.courseInfo.course_rating.ratingPercentages;
             this.studentFeedbacks = this.courseInfo.students_feedbacks;
             this.lectures = this.courseInfo.lectures;
           },
         });
       });
-      this.lectureService.getLectureData(courseId).subscribe({
-        next: (result: Array<any>) => {
+      this.lectureService.getLectureData(courseId, lectureId).subscribe({
+        next: (result) => {
+          const lectureData = result.data;
           // this.lectures = result.map((lecture) => lecture.id == +lectureId);
-          this.lectureService.lectureDataSnippet.next(
-            result.filter((lecture) => lecture.id == +lectureId)
-          );
+          this.lectureService.lectureDataSnippet.next(lectureData);
         },
         error: (err) => {
           console.log(err);
@@ -84,6 +87,10 @@ export class SingleLectureComponent {
       this.lectureService.lectureDataSnippet.subscribe((value) => {
         console.log(value);
         this.activeLecture = value[0];
+        this.lectureVideo = this.sanitizer.bypassSecurityTrustResourceUrl(
+          `https://drive.google.com/file/d/15zJfaXQgEUJfvC_kP6kFbYX_G0Gw4qbd/preview`
+        );
+        console.log(this.lectureVideo);
       });
     });
 
@@ -102,17 +109,17 @@ export class SingleLectureComponent {
   goToLecture(lectureId: string) {
     this.activatedRoute.queryParamMap.subscribe((params) => {
       let courseId = params.get('courseId');
-      this.lectureService.getLectureData(courseId as string).subscribe({
-        next: (result: Array<any>) => {
-          // this.lectures = result.map((lecture) => lecture.id == +lectureId);
-          this.lectureService.lectureDataSnippet.next(
-            result.filter((lecture) => lecture.id == +lectureId)
-          );
-        },
-        error: (err) => {
-          console.log(err);
-        },
-      });
+      this.lectureService
+        .getLectureData(courseId as string, lectureId)
+        .subscribe({
+          next: (result: any) => {
+            // this.lectures = result.map((lecture) => lecture.id == +lectureId);
+            this.lectureService.lectureDataSnippet.next(result.data);
+          },
+          error: (err) => {
+            console.log(err);
+          },
+        });
       this.router.navigate(['/student/lecture'], {
         queryParams: { courseId, lectureId: lectureId },
       });

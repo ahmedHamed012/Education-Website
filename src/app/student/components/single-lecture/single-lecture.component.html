@@ -18,7 +18,7 @@
           <i class="pi pi-arrow-left" style="color: black"></i>
         </button>
       </div>
-      <span>{{ courseInfo.title }}</span>
+      <span>{{ courseInfo?.title }}</span>
       <div class="d-flex gap-3">
         <button (click)="visible = true">Write A Review</button>
         <button>Next Lecture</button>
@@ -26,21 +26,30 @@
     </div>
     <div class="d-flex gap-3 flex-wrap">
       <div class="video-container col-12 col-md-4">
-        <video
+        <!-- <video
           width="100%"
           controls
           poster="assets/Images/related_course_1.png"
         >
           <source src="assets/sample-video.mp4" type="video/mp4" />
           Your browser does not support the video tag.
-        </video>
+        </video> -->
+        <iframe
+          [src]="lectureVideo"
+          class="w-100"
+          height="480"
+          allow="autoplay"
+          frameborder="0"
+          sandbox="allow-scripts allow-same-origin"
+          allowfullscreen
+        ></iframe>
       </div>
       <div class="course-content col-12 col-md-6" style="height: fit-content">
         <h3>Course Contents</h3>
         <ul>
           @for (item of lectures; track $index) {
-          <li (click)="goToLecture(item.id)">
-            <i class="pi pi-angle-right px-1"></i>{{ item.title }}
+          <li (click)="goToLecture(item?.id)">
+            <i class="pi pi-angle-right px-1"></i>{{ item?.title }}
           </li>
           }
         </ul>
@@ -52,9 +61,9 @@
   <div class="container flex-column">
     <h3>Lecture Description</h3>
     <p style="line-height: 1.7">
-      {{ activeLecture.description }}
+      {{ activeLecture?.description }}
     </p>
-    <ng-container *ngIf="activeLecture.lecture_notes">
+    <ng-container *ngIf="activeLecture?.lecture_notes">
       <h3>Lecture Notes</h3>
       <p style="line-height: 1.7">
         In ut aliquet ante. Curabitur mollis tincidunt turpis, sed aliquam
@@ -88,7 +97,7 @@
   </div>
 </div>
 <div class="attachments my-5">
-  <div class="container flex-column" *ngIf="activeLecture.lecture_attachments">
+  <div class="container flex-column" *ngIf="activeLecture?.lecture_attachments">
     <h3>Attachments (01)</h3>
     <div
       class="attachment d-flex justify-content-between align-items-center p-3 py-4"
@@ -131,9 +140,9 @@
           />
         </svg>
         <div class="att-name d-flex flex-column">
-          <span>{{ activeLecture.lecture_attachments.name }}</span>
+          <span>{{ activeLecture?.lecture_attachments.name }}</span>
           <span style="color: #6e7485">{{
-            activeLecture.lecture_attachments.size
+            activeLecture?.lecture_attachments.size
           }}</span>
         </div>
       </div>
